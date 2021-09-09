@@ -19,6 +19,26 @@ variable_cost = float(input(f'{"Enter Variable Cost: ":>35s}'))
 overhead_cost = float(input(f'{"Enter Overhead Cost: ":>35s}'))
 print()
 
+# calculate the outputs in standard condition for total revenue,
+# total costs, earnings, break even price, and per bushel profit (Mackenzie)
+# std_total_revenue = ((crop_yield * crop_price) + gov_payment)
+# std_total_cost = (variable_cost + overhead_cost)
+# std_earnings = (dc_total_revenue - dc_total_cost)
+# std_break_even_price = ((dc_total_cost - gov_payment)/crop_yield)
+# std_per_bushel_profit = (crop_price - dc_break_even_price)
+#
+# # calculate the outputs when 10% decrease in yield for total revenue,
+# # total costs, earnings, break even price, and per bushel profit (Mackenzie)
+# dy_total_revenue = ((crop_yield * crop_price) + gov_payment)
+# dy_total_cost = (variable_cost + overhead_cost)
+# dy_earnings = (dc_total_revenue - dc_total_cost)
+# dy_break_even_price = ((dc_total_cost - gov_payment)/crop_yield)
+# dy_per_bushel_profit = (crop_price - dc_break_even_price)
+
+
+# calculate the outputs when 10% increase in yield for total revenue,
+# total costs, earnings, break even price, and per bushel profit (Mackenzie)
+
 # calculate the outputs when 10% decrease in costs for total revenue,
 # total costs, earnings, break even price, and per bushel profit (Mackenzie)
 dc_total_revenue = ((crop_yield * crop_price) + gov_payment)
