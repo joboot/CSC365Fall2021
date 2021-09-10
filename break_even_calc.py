@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# A simple cover crop calculator for Chapter 2's paired programming assignment assignment
+# A simple Break Even calculator for Chapter 2's paired programming assignment
 # Programmers: Jordan Booth, Dan Peters, and Mackenzie Eskey
 # Date: 2021.09.06
 
@@ -66,7 +66,7 @@ iy_earnings = (iy_total_cost - iy_total_revenue)
 iy_break_even_price = ((iy_total_cost - gov_payment)/iy_crop_yield)
 iy_per_bushel_profit = (iy_break_even_price - crop_price)
 
-# formatting headers (provided by Debbie, typed by Mackenzie)
+# formatting headers and output (provided by Debbie, typed by Daniel and Jordan)
 print(f'{"":20s}'
       f'{"":15s}'
       f'{"10% Decrease":>15s}'
