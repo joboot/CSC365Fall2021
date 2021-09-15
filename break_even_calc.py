@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# A simple cover crop calculator for Chapter 2's paired programming assignment assignment
+# A simple Break Even calculator for Chapter 2's paired programming assignment
 # Programmers: Jordan Booth, Dan Peters, and Mackenzie Eskey
 # Date: 2021.09.06
 
@@ -9,7 +9,7 @@ print("Break Even Calculator")
 print("=" * 39)
 print()
 
-# get the estimated revenue (Jordan)
+# get the per acre information (Jordan)
 print("Enter per acre information")
 print("-" * 39)
 crop_yield = float(input(f'{"Enter yield: ":>35s}'))
@@ -19,16 +19,14 @@ variable_cost = float(input(f'{"Enter Variable Cost: ":>35s}'))
 overhead_cost = float(input(f'{"Enter Overhead Cost: ":>35s}'))
 print()
 
-# calculate the outputs in standard condition for total revenue,
-# total costs, earnings, break even price, and per bushel profit (Mackenzie)
+# calculate the outputs in standard condition (Mackenzie)
 std_total_revenue = ((crop_yield * crop_price) + gov_payment)
 std_total_cost = (variable_cost + overhead_cost)
 std_earnings = (std_total_cost - std_total_revenue)
 std_break_even_price = ((std_total_cost - gov_payment)/crop_yield)
 std_per_bushel_profit = (std_break_even_price - crop_price)
 
-# calculate the outputs when 10% decrease in costs for total revenue,
-# total costs, earnings, break even price, and per bushel profit (Mackenzie)
+# calculate the outputs when 10% decrease in costs (Mackenzie)
 dc_crop_yield = crop_yield
 dc_variable_cost = (variable_cost * 0.9)
 dc_overhead_cost = (overhead_cost * 0.9)
@@ -38,8 +36,7 @@ dc_earnings = (dc_total_cost - dc_total_revenue)
 dc_break_even_price = ((dc_total_cost - gov_payment)/dc_crop_yield)
 dc_per_bushel_profit = (dc_break_even_price - crop_price)
 
-# calculate the outputs when 10% increase in costs for total revenue,
-# total costs, earnings, break even price, and per bushel profit (Mackenzie)
+# calculate the outputs when 10% increase in costs (Mackenzie)
 ic_crop_yield = crop_yield
 ic_variable_cost = (variable_cost * 1.1)
 ic_overhead_cost = (overhead_cost * 1.1)
@@ -49,8 +46,7 @@ ic_earnings = (ic_total_cost - ic_total_revenue)
 ic_break_even_price = ((ic_total_cost - gov_payment)/ic_crop_yield)
 ic_per_bushel_profit = (ic_break_even_price - crop_price)
 
-# calculate the outputs when 10% decrease in yield for total revenue,
-# total costs, earnings, break even price, and per bushel profit (Mackenzie)
+# calculate the outputs when 10% decrease in yield (Mackenzie)
 dy_crop_yield = (crop_yield * 0.9)
 dy_variable_cost = variable_cost
 dy_overhead_cost = overhead_cost
@@ -60,8 +56,7 @@ dy_earnings = (dy_total_cost - dy_total_revenue)
 dy_break_even_price = ((dy_total_cost - gov_payment)/dy_crop_yield)
 dy_per_bushel_profit = (dy_break_even_price - crop_price)
 
-# calculate the outputs when 10% increase in yield for total revenue,
-# total costs, earnings, break even price, and per bushel profit (Mackenzie)
+# calculate the outputs when 10% increase in yield (Mackenzie)
 iy_crop_yield = (crop_yield * 1.1)
 iy_variable_cost = variable_cost
 iy_overhead_cost = overhead_cost
@@ -71,7 +66,7 @@ iy_earnings = (iy_total_cost - iy_total_revenue)
 iy_break_even_price = ((iy_total_cost - gov_payment)/iy_crop_yield)
 iy_per_bushel_profit = (iy_break_even_price - crop_price)
 
-# formatting headers (provided by Debbie, typed by Mackenzie)
+# formatting headers and output (provided by Debbie, typed by Daniel and Jordan)
 print(f'{"":20s}'
       f'{"":15s}'
       f'{"10% Decrease":>15s}'
