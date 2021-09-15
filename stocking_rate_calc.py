@@ -53,7 +53,6 @@ while True:
         print('Invalid value.')
 
 print()
-
 # while loop to get user input on the animal unit month in lbs.
 # only allows values 1-2000
 while True:
