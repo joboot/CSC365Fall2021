@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # A stocking rate calculator for Chapter 3's assignment
-# Determines how many cow-calf pairs a pasture can support
+# Determines how many cow-calf pairs a pasture can support.
 # Programmers: Jordan Booth
 # Date: 2021.09.14
 
