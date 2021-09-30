@@ -27,7 +27,7 @@ def main():
         print()
         user_input = input('Would you like to make another calculation?(y/n): ')
         print()
-    print('Program has ended.')
+    print('Water Allocations Calculator has ended.')
 
 
 def display_title():
@@ -82,12 +82,6 @@ def final_output(irrigation_water_allocation, irrigated_area, average_flow_rate,
           ' days\nwhen ' + str(round(irrigated_area)) + ' acres is irrigated with an ' +
           'irrigation system\nthat has a ' + str(round(average_flow_rate)) + ' U.S. gpm system capacity ' +
           'and the rationed\nallocation depth is ' + str(round(rained_allocation_depth)) + ' inches.')
-
-    # ask user if they would like to make another calculation, if not, break out of main while loop
-    print()
-    user_input = input('Would you like to make another calculation?(y/n): ')
-    print()
-    validation.display_line()
 
 
 # runs this specific module's main

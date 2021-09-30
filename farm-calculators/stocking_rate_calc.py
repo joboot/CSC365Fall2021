@@ -19,6 +19,7 @@ def main():
     utilization_rate = utilization_rate_input()
     animal_unit_month = animal_unit_month_input()
     final_output(forage_per_acre, utilization_rate, animal_unit_month)
+    print('Stocking Rate Calculator has ended.')
 
 
 def display_title():
@@ -96,7 +97,6 @@ def final_output(forage_per_acre, utilization_rate, animal_unit_month):
     print()
     print("Stocking rate (cow-calf per acre) =", stocking_rate)
     print()
-    print("End of program")
 
 
 # runs this specific module's main

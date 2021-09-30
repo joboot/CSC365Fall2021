@@ -26,6 +26,7 @@ def main():
     """
     display_title()
     menu()
+    print("Program has ended.")
 
 
 def display_title():
@@ -39,29 +40,41 @@ def display_title():
 
 
 def menu():
-    print("1 - Cover Crop Calculator")
-    print("2 - Break Even Calculator")
-    print("3 - Stocking Rate Calculator")
-    print("4 - Water Allocations Calculator")
-    user_input = int(input('Which calculator would you like to run? '))
+    user_input = 'y'
+    while user_input.lower() == 'y':
+        print("1 - Cover Crop Calculator")
+        print("2 - Break Even Calculator")
+        print("3 - Stocking Rate Calculator")
+        print("4 - Water Allocations Calculator")
+        calc_input = int(input('Which calculator would you like to run? '))
 
-    if user_input == 1:
+        if calc_input == 1:
+            print()
+            print("Running Cover Crop Calculator...")
+            print()
+            cover_crop_calculator.main()
+
+        if calc_input == 2:
+            print()
+            print("Running Break Even Calculator...")
+            print()
+            break_even_calc.main()
+
+        if calc_input == 3:
+            print()
+            print("Running Stocking Rate Calculator...")
+            print()
+            stocking_rate_calc.main()
+
+        if calc_input == 4:
+            print()
+            print("Running Water Allocations Calculator...")
+            print()
+            water_allocations_calc.main()
+
         print()
-        print("Running Cover Crop Calculator...")
-
-    if user_input == 2:
+        user_input = input('Would you like to run another calculator?(y/n): ')
         print()
-        print("Running Break Even Calculator...")
-
-    if user_input == 3:
-        print()
-        print("Running Stocking Rate Calculator...")
-
-    if user_input == 4:
-        print()
-        print("Running Water Allocations Calculator...")
-
-    print()
 
 
 # runs this specific module's main

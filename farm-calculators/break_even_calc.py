@@ -41,6 +41,7 @@ def main():
                  iy_earnings, iy_break_even_price, iy_per_bushel_profit
                  )
 
+    print('Break Even Calculator has ended.')
 
 def display_title():
     # display a program title
@@ -236,9 +237,6 @@ def table_output(crop_yield, crop_price, gov_payment, variable_cost, overhead_co
           f'{iy_per_bushel_profit:15,.2f}'
           f'{dc_per_bushel_profit:15,.2f}'
           f'{ic_per_bushel_profit:15,.2f}')
-
-    print()
-    print("Goodbye")
 
 
 # runs this specific module's main

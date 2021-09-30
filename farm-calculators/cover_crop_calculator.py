@@ -18,6 +18,7 @@ def main():
     seeding_rate = seeding_input()
     cover_crop_needed = cover_crop_calc(acreage_area, seeding_rate)
     final_output(cover_crop_needed)
+    print('Cover Crop Calculator has ended.')
 
 
 def display_title():
@@ -65,9 +66,6 @@ def final_output(cover_crop_needed):
     # print cover crop needed
     print()
     print("Total cover crop needed:", cover_crop_needed)
-
-    print()
-    print("Goodbye")
 
 
 # runs this specific module's main
