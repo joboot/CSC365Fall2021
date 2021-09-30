@@ -41,10 +41,10 @@ def get_float(prompt, low, high):
     """
     while True:
         number = float(input(prompt))
-        if low <= number <= high:
+        if low < number <= high:
             return number
         else:
-            print("Entry must be greater than or equal to", low,
+            print("Entry must be greater than", low,
                   "and less than or equal to", high)
 
 
@@ -61,7 +61,7 @@ def get_int(prompt, low, high):
         if low < number <= high:
             return number
         else:
-            print("Entry must be greater than or equal to", low,
+            print("Entry must be greater than", low,
                   "and less than or equal to", high)
 
 

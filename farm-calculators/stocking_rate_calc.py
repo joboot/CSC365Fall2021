@@ -40,15 +40,8 @@ def forage_samples():
     Gets user input on forage samples and calculates forage per acre
     :return forage_per_acre:
     """
-    # while loop to get user input on the number of forage samples taken.
     # only allows values 1-20
-    while True:
-        forage_samples_taken = int(input('Enter the number of forage samples taken (1-20): '))
-
-        if 0 < forage_samples_taken < 21:
-            break
-        else:
-            print('Invalid value.')
+    forage_samples_taken = validation.get_int('Enter the number of forage samples taken (1-20): ', 0, 20)
 
     print()
     print("Please enter dry clipping samples in grams:")
@@ -79,15 +72,8 @@ def utilization_rate_input():
     Gets user input on utilization rate
     :return utilization_rate:
     """
-    # while loop to get user input on the utilization rate.
     # only allows values 1-100
-    while True:
-        utilization_rate = int(input('Enter the utilization rate (1-100): '))
-
-        if 0 < utilization_rate < 101:
-            break
-        else:
-            print('Invalid value.')
+    utilization_rate = validation.get_int('Enter the utilization rate (1-100): ', 0, 100)
 
     print()
     return utilization_rate
@@ -98,15 +84,9 @@ def animal_unit_month_input():
     Gets user input on animal unit month
     :return animal_unit_month:
     """
-    # while loop to get user input on the animal unit month in lbs.
     # only allows values 1-2000
-    while True:
-        animal_unit_month = int(input('Enter the AUM (animal unit month) in lbs (1-2000): '))
+    animal_unit_month = validation.get_int('Enter the AUM (animal unit month) in lbs (1-2000): ', 0, 2000)
 
-        if 0 < animal_unit_month < 2001:
-            break
-        else:
-            print('Invalid value.')
     return animal_unit_month
 
 

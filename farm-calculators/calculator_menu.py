@@ -17,7 +17,6 @@ __date__ = "9.28.2021"
 __status__ = "Development"
 
 
-# main function
 def main():
     """
     main function
@@ -50,7 +49,7 @@ def menu():
         print("2 - Break Even Calculator")
         print("3 - Stocking Rate Calculator")
         print("4 - Water Allocations Calculator")
-        calc_input = int(input('Which calculator would you like to run? '))
+        calc_input = validation.get_int('Which calculator would you like to run? ', 0, 4)
 
         if calc_input == 1:
             print()
