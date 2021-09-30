@@ -11,37 +11,41 @@ __version__ = "1.0"
 __date__ = "9.28.2021"
 __status__ = "Development"
 
-LINE_LENGTH = 60
 
-# display a program title
-print("Cover Crop Calculator")
-print("=" * LINE_LENGTH)
-print()
+def display_title():
+    """
+    Displays title of program
+    :return:
+    """
+    # display a program title
+    print("Cover Crop Calculator")
+    validation.display_line()
+    print()
 
-# get the estimated coverage area length and width in feet from the user
-print("Estimate Coverage Area")
-print("-" * 39)
-area_length_ft = float(input("Enter length:\t"))
-area_width_ft = float(input("Enter width:\t"))
-print()
+    # get the estimated coverage area length and width in feet from the user
+    print("Estimate Coverage Area")
+    validation.display_line()
+    area_length_ft = float(input("Enter length:\t"))
+    area_width_ft = float(input("Enter width:\t"))
+    print()
 
-# calculate acreage area
-acreage_area = (area_length_ft * area_width_ft)/43560
-print("Total Acreage Area =", acreage_area)
-print()
+    # calculate acreage area
+    acreage_area = (area_length_ft * area_width_ft)/43560
+    print("Total Acreage Area =", acreage_area)
+    print()
 
-# get estimated cover crop needed
-print("Estimate Cover Crop needed")
-print("-" * LINE_LENGTH)
-# get seeding rate from user
-seeding_rate = float(input("Enter seeding rate:\t"))
+    # get estimated cover crop needed
+    print("Estimate Cover Crop needed")
+    validation.display_line()
+    # get seeding rate from user
+    seeding_rate = float(input("Enter seeding rate:\t"))
 
-# calculate cover crop needed
-cover_crop_needed = seeding_rate * acreage_area
+    # calculate cover crop needed
+    cover_crop_needed = seeding_rate * acreage_area
 
-# print cover crop needed
-print()
-print("Total cover crop needed:", cover_crop_needed)
+    # print cover crop needed
+    print()
+    print("Total cover crop needed:", cover_crop_needed)
 
-print()
-print("Goodbye")
+    print()
+    print("Goodbye")

@@ -5,12 +5,20 @@ Validation code for data input from the user.
 Keeps the user from entering floats or integers outside of range specified
 """
 
-import validation
-
 __author__ = "Jordan Booth"
 __version__ = "1.0"
 __date__ = "9.28.2021"
 __status__ = "Development"
+
+LINE_LENGTH = 60
+
+
+def display_line():
+    """
+    Displays a line for program output
+    :return:
+    """
+    print('=' * LINE_LENGTH)
 
 
 def get_float(prompt, low, high):
