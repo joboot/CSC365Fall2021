@@ -8,11 +8,15 @@ import validation
 
 __author__ = "Jordan Booth"
 __version__ = "1.0"
-__date__ = "9.28.2021"
+__date__ = "9.30.2021"
 __status__ = "Development"
 
 
 def main():
+    """
+    Main function, runs whole program
+    :return:
+    """
     display_title()
     acreage_area = area_input()
     seeding_rate = seeding_input()
@@ -24,7 +28,7 @@ def main():
 def display_title():
     """
     Displays title of program
-    :return: none
+    :return:
     """
     # display a program title
     print("Cover Crop Calculator")
@@ -33,6 +37,10 @@ def display_title():
 
 
 def area_input():
+    """
+    Estimates area of land in acres
+    :return acreage_area:
+    """
     # get the estimated coverage area length and width in feet from the user
     print("Estimate Coverage Area")
     validation.display_line()
@@ -48,6 +56,10 @@ def area_input():
 
 
 def seeding_input():
+    """
+    Gets user input on seeding rate
+    :return seeding_rate:
+    """
     # get estimated cover crop needed
     print("Estimate Cover Crop needed")
     validation.display_line()
@@ -57,12 +69,23 @@ def seeding_input():
 
 
 def cover_crop_calc(acreage_area, seeding_rate):
+    """
+    Calculates cover crop needed
+    :param acreage_area:
+    :param seeding_rate:
+    :return cover_crop_needed:
+    """
     # calculate cover crop needed
     cover_crop_needed = seeding_rate * acreage_area
     return cover_crop_needed
 
 
 def final_output(cover_crop_needed):
+    """
+    Final output of cover crop needed
+    :param cover_crop_needed:
+    :return:
+    """
     # print cover crop needed
     print()
     print("Total cover crop needed:", cover_crop_needed)

@@ -9,11 +9,15 @@ import validation
 
 __author__ = "Jordan Booth"
 __version__ = "1.0"
-__date__ = "9.28.2021"
+__date__ = "9.30.2021"
 __status__ = "Development"
 
 
 def main():
+    """
+    Main function
+    :return:
+    """
     display_title()
     forage_per_acre = forage_samples()
     utilization_rate = utilization_rate_input()
@@ -23,11 +27,19 @@ def main():
 
 
 def display_title():
+    """
+    Displays title
+    :return:
+    """
     print('Cow-Calf Pair Pasture Stocking Rates')
     validation.display_line()
 
 
 def forage_samples():
+    """
+    Gets user input on forage samples and calculates forage per acre
+    :return forage_per_acre:
+    """
     # while loop to get user input on the number of forage samples taken.
     # only allows values 1-20
     while True:
@@ -63,6 +75,10 @@ def forage_samples():
 
 
 def utilization_rate_input():
+    """
+    Gets user input on utilization rate
+    :return utilization_rate:
+    """
     # while loop to get user input on the utilization rate.
     # only allows values 1-100
     while True:
@@ -78,6 +94,10 @@ def utilization_rate_input():
 
 
 def animal_unit_month_input():
+    """
+    Gets user input on animal unit month
+    :return animal_unit_month:
+    """
     # while loop to get user input on the animal unit month in lbs.
     # only allows values 1-2000
     while True:
@@ -91,6 +111,13 @@ def animal_unit_month_input():
 
 
 def final_output(forage_per_acre, utilization_rate, animal_unit_month):
+    """
+    Calculates stocking rate and prints final output
+    :param forage_per_acre:
+    :param utilization_rate:
+    :param animal_unit_month:
+    :return:
+    """
     # calculating and rounding final stocking rate
     stocking_rate = round((forage_per_acre * (utilization_rate/100)) / animal_unit_month, 2)
 

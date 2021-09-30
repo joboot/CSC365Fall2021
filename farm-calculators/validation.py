@@ -7,13 +7,17 @@ Keeps the user from entering floats or integers outside of range specified
 
 __author__ = "Jordan Booth"
 __version__ = "1.0"
-__date__ = "9.28.2021"
+__date__ = "9.30.2021"
 __status__ = "Development"
 
 LINE_LENGTH = 60
 
 
 def main():
+    """
+    Test code
+    :return:
+    """
     display_line()
     get_float("Float input 1-10: ", 1.0, 10.0)
     get_int('Int input 1-10: ', 1, 10)

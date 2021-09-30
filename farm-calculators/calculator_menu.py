@@ -22,7 +22,7 @@ def main():
     """
     main function
     What is supposed to run for the program
-    :return: none
+    :return:
     """
     display_title()
     menu()
@@ -32,7 +32,7 @@ def main():
 def display_title():
     """
     Displays title and initial question
-    :return: none
+    :return:
     """
     print('Farm Calculators')
     validation.display_line()
@@ -40,6 +40,10 @@ def display_title():
 
 
 def menu():
+    """
+    Menu in a while loop that runs all other calculators by user input
+    :return:
+    """
     user_input = 'y'
     while user_input.lower() == 'y':
         print("1 - Cover Crop Calculator")
