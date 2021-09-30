@@ -12,68 +12,93 @@ __version__ = "1.0"
 __date__ = "9.28.2021"
 __status__ = "Development"
 
-LINE_LENGTH = 60
 
-print('Cow-Calf Pair Pasture Stocking Rates')
-print('=' * LINE_LENGTH)
+def main():
+    display_title()
+    forage_per_acre = forage_samples()
+    utilization_rate = utilization_rate_input()
+    animal_unit_month = animal_unit_month_input()
+    final_output(forage_per_acre, utilization_rate, animal_unit_month)
 
-# while loop to get user input on the number of forage samples taken.
-# only allows values 1-20
-while True:
-    forage_samples_taken = int(input('Enter the number of forage samples taken (1-20): '))
 
-    if 0 < forage_samples_taken < 21:
-        break
-    else:
-        print('Invalid value.')
+def display_title():
+    print('Cow-Calf Pair Pasture Stocking Rates')
+    validation.display_line()
 
-print()
-print("Please enter dry clipping samples in grams:")
 
-clipping_sample_weight = 0
+def forage_samples():
+    # while loop to get user input on the number of forage samples taken.
+    # only allows values 1-20
+    while True:
+        forage_samples_taken = int(input('Enter the number of forage samples taken (1-20): '))
 
-# for loop to get user input on sample weights in grams
-# adds up to total weight of samples
-for i in range(forage_samples_taken):
-    clipping_sample_weight = clipping_sample_weight + int(input("Sample #" + str(i+1) + ": "))
+        if 0 < forage_samples_taken < 21:
+            break
+        else:
+            print('Invalid value.')
 
-print()
+    print()
+    print("Please enter dry clipping samples in grams:")
 
-# calculating square foot average per pound and rounding it to the third decimal
-square_foot_avg_lbs = round((clipping_sample_weight / forage_samples_taken) / 453.592, 3)
+    clipping_sample_weight = 0
 
-# calculating forage per acre and rounding it
-forage_per_acre = round(square_foot_avg_lbs * 43560)
+    # for loop to get user input on sample weights in grams
+    # adds up to total weight of samples
+    for i in range(forage_samples_taken):
+        clipping_sample_weight = clipping_sample_weight + int(input("Sample #" + str(i+1) + ": "))
 
-print('Square foot average per lb =', square_foot_avg_lbs)
-print('Forage per acre in lbs =', forage_per_acre)
-print()
+    print()
 
-# while loop to get user input on the utilization rate.
-# only allows values 1-100
-while True:
-    utilization_rate = int(input('Enter the utilization rate (1-100): '))
+    # calculating square foot average per pound and rounding it to the third decimal
+    square_foot_avg_lbs = round((clipping_sample_weight / forage_samples_taken) / 453.592, 3)
 
-    if 0 < utilization_rate < 101:
-        break
-    else:
-        print('Invalid value.')
+    # calculating forage per acre and rounding it
+    forage_per_acre = round(square_foot_avg_lbs * 43560)
 
-print()
-# while loop to get user input on the animal unit month in lbs.
-# only allows values 1-2000
-while True:
-    animal_unit_month = int(input('Enter the AUM (animal unit month) in lbs (1-2000): '))
+    print('Square foot average per lb =', square_foot_avg_lbs)
+    print('Forage per acre in lbs =', forage_per_acre)
+    print()
+    return forage_per_acre
 
-    if 0 < animal_unit_month < 2001:
-        break
-    else:
-        print('Invalid value.')
 
-# calculating and rounding final stocking rate
-stocking_rate = round((forage_per_acre * (utilization_rate/100)) / animal_unit_month, 2)
+def utilization_rate_input():
+    # while loop to get user input on the utilization rate.
+    # only allows values 1-100
+    while True:
+        utilization_rate = int(input('Enter the utilization rate (1-100): '))
 
-print()
-print("Stocking rate (cow-calf per acre) =", stocking_rate)
-print()
-print("End of program")
+        if 0 < utilization_rate < 101:
+            break
+        else:
+            print('Invalid value.')
+
+    print()
+    return utilization_rate
+
+
+def animal_unit_month_input():
+    # while loop to get user input on the animal unit month in lbs.
+    # only allows values 1-2000
+    while True:
+        animal_unit_month = int(input('Enter the AUM (animal unit month) in lbs (1-2000): '))
+
+        if 0 < animal_unit_month < 2001:
+            break
+        else:
+            print('Invalid value.')
+    return animal_unit_month
+
+
+def final_output(forage_per_acre, utilization_rate, animal_unit_month):
+    # calculating and rounding final stocking rate
+    stocking_rate = round((forage_per_acre * (utilization_rate/100)) / animal_unit_month, 2)
+
+    print()
+    print("Stocking rate (cow-calf per acre) =", stocking_rate)
+    print()
+    print("End of program")
+
+
+# runs this specific module's main
+if __name__ == "__main__":
+    main()

@@ -13,6 +13,12 @@ __status__ = "Development"
 LINE_LENGTH = 60
 
 
+def main():
+    display_line()
+    get_float("Float input 1-10: ", 1.0, 10.0)
+    get_int('Int input 1-10: ', 1, 10)
+
+
 def display_line():
     """
     Displays a line for program output
@@ -24,17 +30,17 @@ def display_line():
 def get_float(prompt, low, high):
     """
     Validator to keep input floats inside of a range
-    :param prompt: Message when the user uses wrong input
+    :param prompt: Message to prompt user for input
     :param low: low number for input
     :param high: high number for input
     :return: none
     """
     while True:
         number = float(input(prompt))
-        if low < number <= high:
+        if low <= number <= high:
             return number
         else:
-            print("Entry must be greater than", low,
+            print("Entry must be greater than or equal to", low,
                   "and less than or equal to", high)
 
 
@@ -51,5 +57,10 @@ def get_int(prompt, low, high):
         if low < number <= high:
             return number
         else:
-            print("Entry must be greater than", low,
+            print("Entry must be greater than or equal to", low,
                   "and less than or equal to", high)
+
+
+# runs this specific module's main
+if __name__ == "__main__":
+    main()

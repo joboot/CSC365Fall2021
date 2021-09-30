@@ -12,18 +12,32 @@ __version__ = "1.0"
 __date__ = "9.28.2021"
 __status__ = "Development"
 
-LINE_LENGTH = 60
 
-# Program header (Mackenzie)
-print('Irrigation Water Allocations Calculator')
-print('=' * LINE_LENGTH)
+def main():
+    user_input = 'y'
+    # While loop intakes user input on whether or not they would like to calculate
+    while user_input.lower() == 'y':
 
-user_input = 'y'
+        display_title()
+        irrigation_water_allocation, irrigated_area, average_flow_rate = user_inputs()
+        rained_allocation_depth = calculations(irrigation_water_allocation, irrigated_area, average_flow_rate)
+        final_output(irrigation_water_allocation, irrigated_area, average_flow_rate, rained_allocation_depth)
 
-# While loop intakes user input on whether or not they would like to calculate (Mackenzie)
-while user_input.lower() == 'y':
+        # ask user if they would like to make another calculation, if not, break out of main while loop
+        print()
+        user_input = input('Would you like to make another calculation?(y/n): ')
+        print()
+    print('Program has ended.')
 
-    # While true loop for rationed allocation depth input (Mackenzie)
+
+def display_title():
+    # Program header
+    print('Irrigation Water Allocations Calculator')
+    validation.display_line()
+
+
+def user_inputs():
+    # While true loop for rationed allocation depth input
     while True:
         rained_allocation_depth = float(input(f'{"Enter rationed allocation depth(D) in inches: ":>56}'))
 
@@ -33,7 +47,7 @@ while user_input.lower() == 'y':
         else:
             print(f'{"Invalid value. Please enter again.":>55}')
 
-    # while true loop for area being irrigated input (Jordan)
+    # while true loop for area being irrigated input
     while True:
         irrigated_area = float(input(f'{"Enter area being irrigated(A) in acres: ":>56}'))
 
@@ -43,7 +57,7 @@ while user_input.lower() == 'y':
         else:
             print(f'{"Invalid value. Please enter again.":>55}')
 
-    # while true loop for average rate of flow input (Jordan)
+    # while true loop for average rate of flow input
     while True:
         average_flow_rate = float(input(f'{"Enter average rate of flow(Q) in U.S. gpm: ":>56}'))
 
@@ -52,21 +66,30 @@ while user_input.lower() == 'y':
             break
         else:
             print(f'{"Invalid value. Please enter again.":>55}')
+    return rained_allocation_depth, irrigated_area, average_flow_rate
 
-    # calculation for the irrigation water allocation (Mackenzie)
+
+def calculations(rained_allocation_depth, irrigated_area, average_flow_rate):
+    # calculation for the irrigation water allocation
     irrigation_water_allocation = round(18.857 * rained_allocation_depth * irrigated_area / average_flow_rate, 1)
+    return irrigation_water_allocation
 
-    # final print statement containing the inputs and final output all in one sentence (Jordan)
+
+def final_output(irrigation_water_allocation, irrigated_area, average_flow_rate, rained_allocation_depth):
+    # final print statement containing the inputs and final output all in one sentence
     print()
     print('The allocation of water will be used up in ' + str(irrigation_water_allocation) +
           ' days\nwhen ' + str(round(irrigated_area)) + ' acres is irrigated with an ' +
           'irrigation system\nthat has a ' + str(round(average_flow_rate)) + ' U.S. gpm system capacity ' +
           'and the rationed\nallocation depth is ' + str(round(rained_allocation_depth)) + ' inches.')
 
-    # ask user if they would like to make another calculation, if not, break out of main while loop (Jordan)
+    # ask user if they would like to make another calculation, if not, break out of main while loop
     print()
     user_input = input('Would you like to make another calculation?(y/n): ')
     print()
-    print('=' * LINE_LENGTH)
+    validation.display_line()
 
-print('Program has ended.')
+
+# runs this specific module's main
+if __name__ == "__main__":
+    main()
