@@ -49,32 +49,25 @@ def menu():
         print("2 - Break Even Calculator")
         print("3 - Stocking Rate Calculator")
         print("4 - Water Allocations Calculator")
-        calc_input = validation.get_int('Which calculator would you like to run? ', 0, 4)
-
+        calc_input = validation.get_range('Which calculator would you like to run? ', 0, 4, 'int')
+        print()
         if calc_input == 1:
-            print()
             print("Running Cover Crop Calculator...")
-            print()
             cover_crop_calculator.main()
 
-        if calc_input == 2:
-            print()
+        elif calc_input == 2:
             print("Running Break Even Calculator...")
-            print()
             break_even_calc.main()
 
-        if calc_input == 3:
-            print()
+        elif calc_input == 3:
             print("Running Stocking Rate Calculator...")
-            print()
             stocking_rate_calc.main()
 
-        if calc_input == 4:
-            print()
+        elif calc_input == 4:
             print("Running Water Allocations Calculator...")
-            print()
             water_allocations_calc.main()
 
+        print()
         print()
         user_input = input('Would you like to run another calculator?(y/n): ')
         print()

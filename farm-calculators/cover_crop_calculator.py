@@ -44,13 +44,13 @@ def area_input():
     # get the estimated coverage area length and width in feet from the user
     print("Estimate Coverage Area")
     validation.display_line()
-    area_length_ft = float(input("Enter length:\t"))
-    area_width_ft = float(input("Enter width:\t"))
+    area_length_ft = validation.get_positive_num("Enter length:\t", 'float')
+    area_width_ft = validation.get_positive_num("Enter width:\t", 'float')
     print()
 
     # calculate acreage area
     acreage_area = (area_length_ft * area_width_ft)/43560
-    print("Total Acreage Area =", acreage_area)
+    print("Total Acreage Area =", round(acreage_area, 3))
     print()
     return acreage_area
 
@@ -64,7 +64,7 @@ def seeding_input():
     print("Estimate Cover Crop needed")
     validation.display_line()
     # get seeding rate from user
-    seeding_rate = float(input("Enter seeding rate:\t"))
+    seeding_rate = validation.get_positive_num("Enter seeding rate:\t", 'float')
     return seeding_rate
 
 
@@ -88,7 +88,7 @@ def final_output(cover_crop_needed):
     """
     # print cover crop needed
     print()
-    print("Total cover crop needed:", cover_crop_needed)
+    print("Total cover crop needed:", round(cover_crop_needed, 3))
 
 
 # runs this specific module's main

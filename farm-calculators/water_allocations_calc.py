@@ -49,35 +49,12 @@ def user_inputs():
     Gets user inputs needed for calculation
     :return rained_allocation_depth, irrigated_area, average_flow_rate:
     """
-    # While true loop for rationed allocation depth input
-    while True:
-        rained_allocation_depth = float(input(f'{"Enter rationed allocation depth(D) in inches: ":>56}'))
+    rained_allocation_depth = validation.get_positive_num("Enter rationed allocation depth(D) in inches: ", 'float')
 
-        # if it is less than 0, it is invalid
-        if 0 < rained_allocation_depth:
-            break
-        else:
-            print(f'{"Invalid value. Please enter again.":>55}')
+    irrigated_area = validation.get_positive_num("Enter area being irrigated(A) in acres: ", 'float')
 
-    # while true loop for area being irrigated input
-    while True:
-        irrigated_area = float(input(f'{"Enter area being irrigated(A) in acres: ":>56}'))
+    average_flow_rate = validation.get_positive_num("Enter average rate of flow(Q) in U.S. gpm: ", 'float')
 
-        # if it is less than 0, it is invalid
-        if 0 < irrigated_area:
-            break
-        else:
-            print(f'{"Invalid value. Please enter again.":>55}')
-
-    # while true loop for average rate of flow input
-    while True:
-        average_flow_rate = float(input(f'{"Enter average rate of flow(Q) in U.S. gpm: ":>56}'))
-
-        # if it is less than 0, it is invalid
-        if 0 < average_flow_rate:
-            break
-        else:
-            print(f'{"Invalid value. Please enter again.":>55}')
     return rained_allocation_depth, irrigated_area, average_flow_rate
 
 
@@ -105,10 +82,10 @@ def final_output(irrigation_water_allocation, irrigated_area, average_flow_rate,
     """
     # final print statement containing the inputs and final output all in one sentence
     print()
-    print('The allocation of water will be used up in ' + str(irrigation_water_allocation) +
-          ' days\nwhen ' + str(round(irrigated_area)) + ' acres is irrigated with an ' +
-          'irrigation system\nthat has a ' + str(round(average_flow_rate)) + ' U.S. gpm system capacity ' +
-          'and the rationed\nallocation depth is ' + str(round(rained_allocation_depth)) + ' inches.')
+    print('The allocation of water will be used up in ' + str(round(irrigation_water_allocation, 1)) +
+          ' days\nwhen ' + str(round(irrigated_area, 1)) + ' acres is irrigated with an ' +
+          'irrigation system\nthat has a ' + str(round(average_flow_rate, 1)) + ' U.S. gpm system capacity ' +
+          'and the rationed\nallocation depth is ' + str(round(rained_allocation_depth, 1)) + ' inches.')
 
 
 # runs this specific module's main

@@ -74,11 +74,11 @@ def user_input():
     # get the per acre information
     print("Enter per acre information")
     validation.display_line()
-    crop_yield = float(input(f'{"Enter yield: ":>35s}'))
-    crop_price = float(input(f'{"Enter price: ":>35s}'))
-    gov_payment = float(input(f'{"Enter Government Payment: ":>35s}'))
-    variable_cost = float(input(f'{"Enter Variable Cost: ":>35s}'))
-    overhead_cost = float(input(f'{"Enter Overhead Cost: ":>35s}'))
+    crop_yield = validation.get_positive_num("Enter yield: ", 'float')
+    crop_price = validation.get_positive_num("Enter price: ", 'float')
+    gov_payment = validation.get_positive_num("Enter Government Payment: ", 'float')
+    variable_cost = validation.get_positive_num("Enter Variable Cost: ", 'float')
+    overhead_cost = validation.get_positive_num("Enter Overhead Cost: ", 'float')
     print()
     return crop_yield, crop_price, gov_payment, variable_cost, overhead_cost
 

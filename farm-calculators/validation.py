@@ -19,8 +19,19 @@ def main():
     :return:
     """
     display_line()
-    get_float("Float input 1-10: ", 1.0, 10.0)
-    get_int('Int input 1-10: ', 1, 10)
+    pos_num_int = get_positive_num('positive num int: ', 'int')
+    pos_num_float = get_positive_num('positive num float: ', 'float')
+    num_int = get_num('num int: ', 'int')
+    num_float = get_num('num float: ', 'float')
+    range_int = get_range('get range int(1-100): ', 0, 100, 'int')
+    range_float = get_range('get range float(1-100): ', 0, 100, 'float')
+
+    print(pos_num_int)
+    print(pos_num_float)
+    print(num_int)
+    print(num_float)
+    print(range_int)
+    print(range_float)
 
 
 def display_line():
@@ -31,33 +42,53 @@ def display_line():
     print('=' * LINE_LENGTH)
 
 
-def get_float(prompt, low, high):
+def get_num(prompt, data_type='int'):
     """
-    Validator to keep input floats inside of a range
-    :param prompt: Message to prompt user for input
-    :param low: low number for input
-    :param high: high number for input
-    :return: none
+    Prompt user for input
+    :param data_type:
+    :param prompt:
+    :return:
+    """
+    if data_type == 'int':
+        number = int(input(prompt))
+    else:
+        number = float(input(prompt))
+
+    return number
+
+
+def get_positive_num(prompt, data_type='int'):
+    """
+    Prompt user for input and ensure input number is positive
+    :param data_type:
+    :param prompt:
+    :return:
     """
     while True:
-        number = float(input(prompt))
-        if low < number <= high:
+        if data_type == 'int':
+            number = int(input(prompt))
+        else:
+            number = float(input(prompt))
+        if number > 0:
             return number
         else:
-            print("Entry must be greater than", low,
-                  "and less than or equal to", high)
+            print('Entry must be greater a positive number.')
 
 
-def get_int(prompt, low, high):
+def get_range(prompt, low, high, data_type='int'):
     """
-    Validator to keep input integers inside of a range
-    :param prompt: Message when the user uses wrong input
-    :param low: low number for input
-    :param high: high number for input
-    :return: none
+    Prompt user for input and keep input number inside of a range
+    :param data_type:
+    :param prompt:
+    :param low:
+    :param high:
+    :return:
     """
     while True:
-        number = int(input(prompt))
+        if data_type == 'int':
+            number = int(input(prompt))
+        else:
+            number = float(input(prompt))
         if low < number <= high:
             return number
         else:

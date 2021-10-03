@@ -41,7 +41,7 @@ def forage_samples():
     :return forage_per_acre:
     """
     # only allows values 1-20
-    forage_samples_taken = validation.get_int('Enter the number of forage samples taken (1-20): ', 0, 20)
+    forage_samples_taken = validation.get_range('Enter the number of forage samples taken (1-20): ', 0, 20, 'int')
 
     print()
     print("Please enter dry clipping samples in grams:")
@@ -51,8 +51,8 @@ def forage_samples():
     # for loop to get user input on sample weights in grams
     # adds up to total weight of samples
     for i in range(forage_samples_taken):
-        clipping_sample_weight = clipping_sample_weight + int(input("Sample #" + str(i+1) + ": "))
-
+        clipping_sample_weight = clipping_sample_weight + \
+                                 validation.get_positive_num("Sample #" + str(i+1) + ": ", 'int')
     print()
 
     # calculating square foot average per pound and rounding it to the third decimal
@@ -73,7 +73,7 @@ def utilization_rate_input():
     :return utilization_rate:
     """
     # only allows values 1-100
-    utilization_rate = validation.get_int('Enter the utilization rate (1-100): ', 0, 100)
+    utilization_rate = validation.get_range('Enter the utilization rate (1-100): ', 0, 100, 'int')
 
     print()
     return utilization_rate
@@ -85,7 +85,7 @@ def animal_unit_month_input():
     :return animal_unit_month:
     """
     # only allows values 1-2000
-    animal_unit_month = validation.get_int('Enter the AUM (animal unit month) in lbs (1-2000): ', 0, 2000)
+    animal_unit_month = validation.get_range('Enter the AUM (animal unit month) in lbs (1-2000): ', 0, 2000, 'int')
 
     return animal_unit_month
 
