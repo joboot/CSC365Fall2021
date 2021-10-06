@@ -15,7 +15,17 @@ __status__ = "Development"
 
 def main():
     """
-    Main function surrounded in a while loop based on user input
+    Inputs:
+    User input on whether or not they want to calculate again
+    Rained allocation depth in inches (D)
+    Irrigated area in acres (A)
+    Average flow rate in U.S. gpm(Gallons per minute) (Q)
+    Outputs:
+    Final output sentence
+    Rained allocation depth in inches (D)
+    Irrigated area in acres (A)
+    Average flow rate in U.S. gpm(Gallons per minute) (Q)
+    Irrigation water allocation in days
     :return:
     """
     user_input = 'y'
@@ -23,8 +33,8 @@ def main():
     while user_input.lower() == 'y':
 
         display_title()
-        irrigation_water_allocation, irrigated_area, average_flow_rate = user_inputs()
-        rained_allocation_depth = calculations(irrigation_water_allocation, irrigated_area, average_flow_rate)
+        rained_allocation_depth, irrigated_area, average_flow_rate = user_inputs()
+        irrigation_water_allocation = calculations(rained_allocation_depth, irrigated_area, average_flow_rate)
         final_output(irrigation_water_allocation, irrigated_area, average_flow_rate, rained_allocation_depth)
 
         # ask user if they would like to make another calculation, if not, break out of main while loop
@@ -47,7 +57,7 @@ def display_title():
 def user_inputs():
     """
     Gets user inputs needed for calculation
-    :return rained_allocation_depth, irrigated_area, average_flow_rate:
+    :return: User inputted rained allocation depth, irrigated area, average flow rate
     """
     rained_allocation_depth = validation.get_positive_num("Enter rationed allocation depth(D) in inches: ", 'float')
 
@@ -64,7 +74,7 @@ def calculations(rained_allocation_depth, irrigated_area, average_flow_rate):
     :param rained_allocation_depth:
     :param irrigated_area:
     :param average_flow_rate:
-    :return irrigation_water_allocation:
+    :return: Calculated irrigation water allocation using its specific formula (18.857 * D * A / Q)
     """
     # calculation for the irrigation water allocation
     irrigation_water_allocation = round(18.857 * rained_allocation_depth * irrigated_area / average_flow_rate, 1)
@@ -74,10 +84,11 @@ def calculations(rained_allocation_depth, irrigated_area, average_flow_rate):
 def final_output(irrigation_water_allocation, irrigated_area, average_flow_rate, rained_allocation_depth):
     """
     Final output in sentence format
-    :param irrigation_water_allocation:
-    :param irrigated_area:
-    :param average_flow_rate:
-    :param rained_allocation_depth:
+    Calculations are rounded and converted to strings
+    :param irrigation_water_allocation: Calculated irrigation water allocation
+    :param irrigated_area: Calculated irrigated area
+    :param average_flow_rate: Calculated average flow rate
+    :param rained_allocation_depth: Calculated rained allocation depth
     :return:
     """
     # final print statement containing the inputs and final output all in one sentence

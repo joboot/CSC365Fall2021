@@ -3,6 +3,7 @@
 """
 A menu for all of our farm calculators for Chapter 4's assignment
 Combines all of the previous assignments that we have worked on into one menu
+The user can choose which calculator to run from this menu and run them multiple times
 """
 
 import validation
@@ -19,9 +20,14 @@ __status__ = "Development"
 
 def main():
     """
-    main function
-    What is supposed to run for the program
-    :return:
+    Inputs:
+    User input to keep running calculator menu
+    User input to choose which calculator to run
+
+    Outputs:
+    Calculator menu
+    Any calculator the user wants to run
+    :return: n/a
     """
     display_title()
     menu()
@@ -30,8 +36,8 @@ def main():
 
 def display_title():
     """
-    Displays title and initial question
-    :return:
+    Displays title
+    :return: n/a
     """
     print('Farm Calculators')
     validation.display_line()
@@ -41,7 +47,7 @@ def display_title():
 def menu():
     """
     Menu in a while loop that runs all other calculators by user input
-    :return:
+    :return: n/a
     """
     user_input = 'y'
     while user_input.lower() == 'y':

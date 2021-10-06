@@ -15,8 +15,17 @@ __status__ = "Development"
 
 def main():
     """
-    Main function
-    :return:
+    Inputs:
+    Number of forage samples taken
+    Dry clipping sample weight in grams
+    Utilization rate(1-100)
+    Animal unit month in lbs(1-2000)
+
+    Outputs:
+    Sq ft average per lb
+    Forage per acre in lbs
+    Stocking rate in cow-calf per acre
+    :return: n/a
     """
     display_title()
     forage_per_acre = forage_samples()
@@ -29,7 +38,7 @@ def main():
 def display_title():
     """
     Displays title
-    :return:
+    :return: n/a
     """
     print('Cow-Calf Pair Pasture Stocking Rates')
     validation.display_line()
@@ -37,8 +46,9 @@ def display_title():
 
 def forage_samples():
     """
-    Gets user input on forage samples and calculates forage per acre
-    :return forage_per_acre:
+    Gets user input on forage samples and calculates forage per acre by adding the clipping samples,
+    converting the weight to sq ft average per pound, and then converting to acres
+    :return: the calculated forage per acre
     """
     # only allows values 1-20
     forage_samples_taken = validation.get_range('Enter the number of forage samples taken (1-20): ', 0, 20, 'int')
@@ -69,8 +79,8 @@ def forage_samples():
 
 def utilization_rate_input():
     """
-    Gets user input on utilization rate
-    :return utilization_rate:
+    Gets user input on utilization rate(1-100)
+    :return: the utilization rate as an int
     """
     # only allows values 1-100
     utilization_rate = validation.get_range('Enter the utilization rate (1-100): ', 0, 100, 'int')
@@ -81,8 +91,8 @@ def utilization_rate_input():
 
 def animal_unit_month_input():
     """
-    Gets user input on animal unit month
-    :return animal_unit_month:
+    Gets user input on animal unit month(1-2000)
+    :return: animal unit month as an int
     """
     # only allows values 1-2000
     animal_unit_month = validation.get_range('Enter the AUM (animal unit month) in lbs (1-2000): ', 0, 2000, 'int')
@@ -92,11 +102,11 @@ def animal_unit_month_input():
 
 def final_output(forage_per_acre, utilization_rate, animal_unit_month):
     """
-    Calculates stocking rate and prints final output
-    :param forage_per_acre:
-    :param utilization_rate:
-    :param animal_unit_month:
-    :return:
+    Calculates stocking rate in cow-calf per acre and prints final output
+    :param forage_per_acre: the calculated forage per acre
+    :param utilization_rate: the calculated utilization rate
+    :param animal_unit_month: the calculated animal unit month
+    :return: n/a
     """
     # calculating and rounding final stocking rate
     stocking_rate = round((forage_per_acre * (utilization_rate/100)) / animal_unit_month, 2)

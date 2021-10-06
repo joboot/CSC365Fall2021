@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
 """
-# A simple Break Even calculator for Chapter 2's paired programming assignment
+A simple Break Even calculator for Chapter 2's paired programming assignment
+Calculates the break even price and displays a table with variations in cost and yield
 """
 
 import validation
@@ -14,8 +15,18 @@ __status__ = "Development"
 
 def main():
     """
-    Main function, runs whole program
-    :return:
+    Inputs:
+    Crop yield
+    Crop price
+    Government payment
+    Variable cost
+    Overhead cost
+
+    Outputs:
+    Increased and decreased cost values and calculations
+    Increased and decreased yield values and calculations
+    Final output table with all information
+    :return: n/a
     """
     display_title()
 
@@ -86,11 +97,11 @@ def user_input():
 def calculate_std_output(crop_yield, crop_price, gov_payment, variable_cost, overhead_cost):
     """
     Calculate the outputs in standard condition
-    :param crop_yield:
-    :param crop_price:
-    :param gov_payment:
-    :param variable_cost:
-    :param overhead_cost:
+    :param crop_yield: Base crop yield
+    :param crop_price: Base crop price
+    :param gov_payment: Base government payment
+    :param variable_cost: Base variable cost
+    :param overhead_cost: Base overhead cost
     :return std_total_revenue, std_total_cost, std_earnings, std_break_even_price, std_per_bushel_profit:
     """
     std_total_revenue = ((crop_yield * crop_price) + gov_payment)
@@ -104,11 +115,11 @@ def calculate_std_output(crop_yield, crop_price, gov_payment, variable_cost, ove
 def calculate_dc_output(crop_yield, crop_price, gov_payment, variable_cost, overhead_cost):
     """
     Calculate the outputs when 10% decrease in costs
-    :param crop_yield:
-    :param crop_price:
-    :param gov_payment:
-    :param variable_cost:
-    :param overhead_cost:
+    :param crop_yield: Base crop yield
+    :param crop_price: Base crop price
+    :param gov_payment: Base government payment
+    :param variable_cost: Base variable cost
+    :param overhead_cost: Base overhead cost
     :return dc_crop_yield, dc_variable_cost, dc_overhead_cost, dc_total_revenue, dc_total_cost,
            dc_earnings, dc_break_even_price, dc_per_bushel_profit:
     """
@@ -127,11 +138,11 @@ def calculate_dc_output(crop_yield, crop_price, gov_payment, variable_cost, over
 def calculate_ic_output(crop_yield, crop_price, gov_payment, variable_cost, overhead_cost):
     """
     Calculate the outputs when 10% increase in costs
-    :param crop_yield:
-    :param crop_price:
-    :param gov_payment:
-    :param variable_cost:
-    :param overhead_cost:
+    :param crop_yield: Base crop yield
+    :param crop_price: Base crop price
+    :param gov_payment: Base government payment
+    :param variable_cost: Base variable cost
+    :param overhead_cost: Base overhead cost
     :return ic_crop_yield, ic_variable_cost, ic_overhead_cost, ic_total_revenue, ic_total_cost,
            ic_earnings, ic_break_even_price, ic_per_bushel_profit:
     """
@@ -150,11 +161,11 @@ def calculate_ic_output(crop_yield, crop_price, gov_payment, variable_cost, over
 def calculate_dy_output(crop_yield, crop_price, gov_payment, variable_cost, overhead_cost):
     """
     Calculate the outputs when 10% decrease in yield
-    :param crop_yield:
-    :param crop_price:
-    :param gov_payment:
-    :param variable_cost:
-    :param overhead_cost:
+    :param crop_yield: Base crop yield
+    :param crop_price: Base crop price
+    :param gov_payment: Base government payment
+    :param variable_cost: Base variable cost
+    :param overhead_cost: Base overhead cost
     :return dy_crop_yield, dy_variable_cost, dy_overhead_cost, dy_total_revenue, dy_total_cost,
            dy_earnings, dy_break_even_price, dy_per_bushel_profit:
     """
@@ -173,7 +184,7 @@ def calculate_dy_output(crop_yield, crop_price, gov_payment, variable_cost, over
 def calculate_iy_output(crop_yield, crop_price, gov_payment, variable_cost, overhead_cost):
     """
     Calculate the outputs when 10% increase in yield
-    :param crop_yield:
+    :param crop_yield: Base crop yield
     :param crop_price:
     :param gov_payment:
     :param variable_cost:
@@ -206,49 +217,49 @@ def table_output(crop_yield, crop_price, gov_payment, variable_cost, overhead_co
                  ):
     """
     Creation of table formatting headers and output
-    :param crop_yield:
-    :param crop_price:
-    :param gov_payment:
-    :param variable_cost:
-    :param overhead_cost:
-    :param std_total_revenue:
-    :param std_total_cost:
-    :param std_earnings:
-    :param std_break_even_price:
-    :param std_per_bushel_profit:
-    :param dc_crop_yield:
-    :param dc_variable_cost:
-    :param dc_overhead_cost:
-    :param dc_total_revenue:
-    :param dc_total_cost:
-    :param dc_earnings:
-    :param dc_break_even_price:
-    :param dc_per_bushel_profit:
-    :param ic_crop_yield:
-    :param ic_variable_cost:
-    :param ic_overhead_cost:
-    :param ic_total_revenue:
-    :param ic_total_cost:
-    :param ic_earnings:
-    :param ic_break_even_price:
-    :param ic_per_bushel_profit:
-    :param dy_crop_yield:
-    :param dy_variable_cost:
-    :param dy_overhead_cost:
-    :param dy_total_revenue:
-    :param dy_total_cost:
-    :param dy_earnings:
-    :param dy_break_even_price:
-    :param dy_per_bushel_profit:
-    :param iy_crop_yield:
-    :param iy_variable_cost:
-    :param iy_overhead_cost:
-    :param iy_total_revenue:
-    :param iy_total_cost:
-    :param iy_earnings:
-    :param iy_break_even_price:
-    :param iy_per_bushel_profit:
-    :return:
+    :param crop_yield: Base crop yield
+    :param crop_price: Base crop price
+    :param gov_payment: Base government aid
+    :param variable_cost: Base variable cost
+    :param overhead_cost: Base overhead cost
+    :param std_total_revenue: Base total revenue
+    :param std_total_cost: Base total cost
+    :param std_earnings: Base earnings
+    :param std_break_even_price: Base break even price
+    :param std_per_bushel_profit: Base per bushel profit
+    :param dc_crop_yield: Decreased cost crop yield
+    :param dc_variable_cost: Decreased cost variable cost
+    :param dc_overhead_cost: Decreased cost overhead cost
+    :param dc_total_revenue: Decreased cost total revenue
+    :param dc_total_cost: Decreased cost total cost
+    :param dc_earnings: Decreased cost earnings
+    :param dc_break_even_price: Decreased cost break even price
+    :param dc_per_bushel_profit: Decreased cost per bushel profit
+    :param ic_crop_yield: Increased cost crop yield
+    :param ic_variable_cost: Increased cost variable cost
+    :param ic_overhead_cost: Increased cost overhead cost
+    :param ic_total_revenue: Increased cost total revenue
+    :param ic_total_cost: Increased cost total cost
+    :param ic_earnings: Increased cost earnings
+    :param ic_break_even_price: Increased cost break even price
+    :param ic_per_bushel_profit: Increased cost per bushel profit
+    :param dy_crop_yield: Decreased yield crop yield
+    :param dy_variable_cost: Decreased yield variable cost
+    :param dy_overhead_cost: Decreased yield overhead cost
+    :param dy_total_revenue: Decreased yield total revenue
+    :param dy_total_cost: Decreased yield total cost
+    :param dy_earnings: Decreased yield earnings
+    :param dy_break_even_price: Decreased yield break even price
+    :param dy_per_bushel_profit: Decreased yield per bushel profit
+    :param iy_crop_yield: Increased yield crop yield
+    :param iy_variable_cost: Increased yield variable cost
+    :param iy_overhead_cost: Increased yield overhead cost
+    :param iy_total_revenue: Increased yield total revenue
+    :param iy_total_cost: Increased yield total cost
+    :param iy_earnings: Increased yield earnings
+    :param iy_break_even_price: Increased yield break even price
+    :param iy_per_bushel_profit: Increased yield per bushel profit
+    :return: n/a
     """
 
     print(f'{"":20s}'

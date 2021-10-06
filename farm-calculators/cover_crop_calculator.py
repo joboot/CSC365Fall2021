@@ -14,8 +14,15 @@ __status__ = "Development"
 
 def main():
     """
-    Main function, runs whole program
-    :return:
+    Inputs:
+    Area length in ft
+    Area width in ft
+    Seeding rate of crop
+
+    Outputs:
+    Total acreage area
+    Total cover crop needed
+    :return: n/a
     """
     display_title()
     acreage_area = area_input()
@@ -28,7 +35,7 @@ def main():
 def display_title():
     """
     Displays title of program
-    :return:
+    :return: n/a
     """
     # display a program title
     print("Cover Crop Calculator")
@@ -38,8 +45,8 @@ def display_title():
 
 def area_input():
     """
-    Estimates area of land in acres
-    :return acreage_area:
+    Calculates area of land in acres as a float
+    :return: Acreage area calculated with the area width and length given by the user
     """
     # get the estimated coverage area length and width in feet from the user
     print("Estimate Coverage Area")
@@ -57,8 +64,8 @@ def area_input():
 
 def seeding_input():
     """
-    Gets user input on seeding rate
-    :return seeding_rate:
+    Gets user input on seeding rate as a float
+    :return: User input on seeding rate
     """
     # get estimated cover crop needed
     print("Estimate Cover Crop needed")
@@ -70,10 +77,10 @@ def seeding_input():
 
 def cover_crop_calc(acreage_area, seeding_rate):
     """
-    Calculates cover crop needed
-    :param acreage_area:
-    :param seeding_rate:
-    :return cover_crop_needed:
+    Calculates cover crop needed by multiplying acreage area and seeding rate
+    :param acreage_area: Calculated acreage area
+    :param seeding_rate: User inputted seeding rate
+    :return: Total cover crop needed
     """
     # calculate cover crop needed
     cover_crop_needed = seeding_rate * acreage_area
@@ -83,8 +90,8 @@ def cover_crop_calc(acreage_area, seeding_rate):
 def final_output(cover_crop_needed):
     """
     Final output of cover crop needed
-    :param cover_crop_needed:
-    :return:
+    :param cover_crop_needed: Calculated total cover crop needed
+    :return: n/a
     """
     # print cover crop needed
     print()

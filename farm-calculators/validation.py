@@ -15,8 +15,8 @@ LINE_LENGTH = 60
 
 def main():
     """
-    Test code
-    :return:
+    Test each function to see if they work correctly
+    :return: n/a
     """
     display_line()
     pos_num_int = get_positive_num('positive num int: ', 'int')
@@ -37,7 +37,7 @@ def main():
 def display_line():
     """
     Displays a line for program output
-    :return:
+    :return: n/a
     """
     print('=' * LINE_LENGTH)
 
@@ -45,9 +45,9 @@ def display_line():
 def get_num(prompt, data_type='int'):
     """
     Prompt user for input
-    :param data_type:
-    :param prompt:
-    :return:
+    :param data_type: Data type to be converted to (int or float)
+    :param prompt: Text to ask the user for input
+    :return: n/a
     """
     if data_type == 'int':
         number = int(input(prompt))
@@ -60,8 +60,8 @@ def get_num(prompt, data_type='int'):
 def get_positive_num(prompt, data_type='int'):
     """
     Prompt user for input and ensure input number is positive
-    :param data_type:
-    :param prompt:
+    :param data_type: Data type to be converted to (int or float)
+    :param prompt: Text to ask the user for input
     :return:
     """
     while True:
@@ -78,10 +78,10 @@ def get_positive_num(prompt, data_type='int'):
 def get_range(prompt, low, high, data_type='int'):
     """
     Prompt user for input and keep input number inside of a range
-    :param data_type:
-    :param prompt:
-    :param low:
-    :param high:
+    :param data_type: Data type to be converted to (int or float)
+    :param prompt: Text to ask the user for input
+    :param low: Lowest possible number input
+    :param high: Highest possible number input
     :return:
     """
     while True:
