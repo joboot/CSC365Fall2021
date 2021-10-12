@@ -57,6 +57,21 @@ def get_num(prompt, data_type='int'):
     return number
 
 
+def get_yn(prompt):
+    """
+    Prompt user for input
+    :param prompt: Text to ask the user for input
+    :return: n/a
+    """
+    while True:
+        user_input = input(prompt)
+        user_input = user_input.lower()
+        if user_input == 'y' or user_input == 'n' or user_input == 'yes' or user_input == 'no':
+            return user_input
+        else:
+            print('Please enter y = Yes, n = No.')
+
+
 def get_positive_num(prompt, data_type='int'):
     """
     Prompt user for input and ensure input number is positive

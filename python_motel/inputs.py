@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-Utility code and validation code for output and data input from the user.
+Code for all of user input pertaining to main module
 """
 
 __author__ = "Jordan Booth"
@@ -14,11 +14,17 @@ import utils
 
 def main():
     """
-
+    Testing input functions
     :return: n/a
     """
     print('inputs main')
+    room_type = 'SINGLE'
+    num_guests = 2
+    price = 50
     day_of_week_input()
+    room_input()
+    guest_input(room_type)
+    night_input(room_type, num_guests, price)
 
 
 def day_of_week_input():
@@ -52,6 +58,7 @@ def day_of_week_input():
 
 
 def room_input():
+    print()
     while True:
         room_type = input("What type of room would you like to stay in?\ns = single, d = double, k = king: ")
         room_type = room_type.lower()
@@ -69,6 +76,7 @@ def room_input():
 
 
 def guest_input(room_type):
+    print()
     while True:
         if room_type == 'SINGLE':
             num_guests = utils.get_range("How many guests will be staying in the " + room_type +
@@ -82,12 +90,15 @@ def guest_input(room_type):
             num_guests = utils.get_range("How many guests will be staying in the " + room_type +
                                          " room: ", 0, 2, 'int')
             return num_guests
+        print()
 
 
 def night_input(room_type, num_guests, price):
+    print()
     num_nights = utils.get_positive_num(
-        'How many days do you want to book a ' + room_type + ' room, with ' + num_guests +
-        ' guests, at ' + price + ' a night: ')
+        'How many days do you want to book a ' + room_type + ' room, with ' + str(num_guests) +
+        ' guests, at ' + str(price) + ' a night: ')
+    print()
 
     return num_nights
 
