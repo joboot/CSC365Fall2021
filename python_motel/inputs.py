@@ -9,6 +9,8 @@ __version__ = "1.0"
 __date__ = "10.7.2021"
 __status__ = "Development"
 
+import utils
+
 
 def main():
     """
@@ -47,6 +49,47 @@ def day_of_week_input():
             return booking_day
         else:
             print("Please enter a day of the week correctly.")
+
+
+def room_input():
+    while True:
+        room_type = input("What type of room would you like to stay in?\ns = single, d = double, k = king: ")
+        room_type = room_type.lower()
+        if room_type == 'single' or room_type == 's':
+            room_type = 'SINGLE'
+            return room_type
+        elif room_type == 'double' or room_type == 'd':
+            room_type = 'DOUBLE'
+            return room_type
+        elif room_type == 'king' or room_type == 'k':
+            room_type = 'KING'
+            return room_type
+        else:
+            print("Please enter the room type correctly.")
+
+
+def guest_input(room_type):
+    while True:
+        if room_type == 'SINGLE':
+            num_guests = utils.get_range("How many guests will be staying in the " + room_type +
+                                         " room: ", 0, 2, 'int')
+            return num_guests
+        elif room_type == 'DOUBLE':
+            num_guests = utils.get_range("How many guests will be staying in the " + room_type +
+                                         " room: ", 0, 4, 'int')
+            return num_guests
+        elif room_type == 'KING':
+            num_guests = utils.get_range("How many guests will be staying in the " + room_type +
+                                         " room: ", 0, 2, 'int')
+            return num_guests
+
+
+def night_input(room_type, num_guests, price):
+    num_nights = utils.get_positive_num(
+        'How many days do you want to book a ' + room_type + ' room, with ' + num_guests +
+        ' guests, at ' + price + ' a night: ')
+
+    return num_nights
 
 
 # runs this specific module's main
