@@ -20,42 +20,33 @@ def main():
 
 
 def day_of_week_input():
-    booking_day = input("Which day of the week will you be checking in?\nMonday - Sunday: ")
-    booking_day = booking_day.lower()
-    print(booking_day)
-    print(booking_day.lower())
     while True:
-        if booking_day == "monday" or 'm':
+        booking_day = input("Which day of the week will you be checking in?\nMonday - Sunday: ")
+        booking_day = booking_day.lower()
+
+        if booking_day == 'monday' or booking_day == 'm' or booking_day == 'mon':
             booking_day = 'MONDAY'
-            print('booking day:', booking_day)
             return booking_day
-        elif booking_day == "tuesday" or 't':
+        elif booking_day == 'tuesday' or booking_day == 't' or booking_day == 'tues':
             booking_day = 'TUESDAY'
-            print('booking day:', booking_day)
             return booking_day
-        elif booking_day.lower() == "wednesday" or 'w':
+        elif booking_day == 'wednesday' or booking_day == 'w' or booking_day == 'wed':
             booking_day = 'WEDNESDAY'
-            print('booking day:', booking_day)
             return booking_day
-        elif booking_day.lower() == "thursday" or 'th':
+        elif booking_day == 'thursday' or booking_day == 'th' or booking_day == 'thurs':
             booking_day = 'THURSDAY'
-            print('booking day:', booking_day)
             return booking_day
-        elif booking_day.lower() == "friday" or 'f':
+        elif booking_day == 'friday' or booking_day == 'f' or booking_day == 'fri':
             booking_day = 'FRIDAY'
-            print('booking day:', booking_day)
             return booking_day
-        elif booking_day.lower() == "saturday" or 'sa':
+        elif booking_day == 'saturday' or booking_day == 'sa' or booking_day == 'sat':
             booking_day = 'SATURDAY'
-            print('booking day:', booking_day)
             return booking_day
-        elif booking_day.lower() == "sunday" or 'su':
+        elif booking_day == 'sunday' or booking_day == 'su' or booking_day == 'sun':
             booking_day = 'SUNDAY'
-            print('booking day:', booking_day)
             return booking_day
         else:
-            "Please enter a day of the week correctly."
-        print(booking_day)
+            print("Please enter a day of the week correctly.")
 
 
 # runs this specific module's main

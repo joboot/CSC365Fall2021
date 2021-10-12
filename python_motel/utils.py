@@ -9,6 +9,8 @@ __version__ = "1.0"
 __date__ = "10.7.2021"
 __status__ = "Development"
 
+import random
+
 
 def main():
     """
@@ -92,6 +94,13 @@ def get_range(prompt, low, high, data_type='int'):
         else:
             print("Entry must be greater than", low,
                   "and less than or equal to", high)
+
+
+def create_rand_num(num):
+    print('getting random number...')
+    rand_num = random.randrange(9)
+
+    return rand_num
 
 
 # runs this specific module's main
