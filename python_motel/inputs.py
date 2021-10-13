@@ -18,11 +18,12 @@ def main():
     :return: n/a
     """
     print('inputs main')
+    rand_single_room, random_double_room, rand_king_room = 0, 0, 0
     room_type = 'SINGLE'
     num_guests = 2
     price = 50
     day_of_week_input()
-    room_input()
+    room_input(rand_single_room, random_double_room, rand_king_room)
     guest_input(room_type)
     night_input(room_type, num_guests, price)
 
@@ -57,22 +58,40 @@ def day_of_week_input():
             print("Please enter a day of the week correctly.")
 
 
-def room_input():
+def room_input(rand_single_room, random_double_room, rand_king_room):
     print()
     while True:
         room_type = input("What type of room would you like to stay in?\ns = single, d = double, k = king: ")
         room_type = room_type.lower()
         if room_type == 'single' or room_type == 's':
             room_type = 'SINGLE'
-            return room_type
+            if rand_single_room == 0:
+                print('Sorry, we have no ' + room_type + ' rooms available, please enter another room type.')
+                print()
+            else:
+                rand_single_room -= 1
+                return room_type, rand_single_room, random_double_room, rand_king_room
+
         elif room_type == 'double' or room_type == 'd':
             room_type = 'DOUBLE'
-            return room_type
+            if random_double_room == 0:
+                print('Sorry, we have no ' + room_type + 'rooms available, please enter another room type.')
+                print()
+            else:
+                random_double_room -= 1
+                return room_type, rand_single_room, random_double_room, rand_king_room
+
         elif room_type == 'king' or room_type == 'k':
             room_type = 'KING'
-            return room_type
+            if rand_king_room == 0:
+                print('Sorry, we have no ' + room_type + 'rooms available, please enter another room type.')
+                print()
+            else:
+                rand_king_room -= 1
+                return room_type, rand_single_room, random_double_room, rand_king_room
         else:
             print("Please enter the room type correctly.")
+            print()
 
 
 def guest_input(room_type):
@@ -97,7 +116,7 @@ def night_input(room_type, num_guests, price):
     print()
     num_nights = utils.get_positive_num(
         'How many days do you want to book a ' + room_type + ' room, with ' + str(num_guests) +
-        ' guests, at ' + str(price) + ' a night: ')
+        ' guests, at $' + str(price) + ' a night: ')
     print()
 
     return num_nights

@@ -112,9 +112,7 @@ def get_range(prompt, low, high, data_type='int'):
 
 
 def create_rand_num(num):
-    print('getting random number...')
     rand_num = random.randrange(num)
-    print(rand_num)
 
     return rand_num
 

@@ -21,15 +21,21 @@ def main():
     """
     display_title()
 
+    rand_single_room = utils.create_rand_num(9)
+    rand_double_room = utils.create_rand_num(11)
+    rand_king_room = utils.create_rand_num(3)
+
     while True:
 
         booking_day = inputs.day_of_week_input()
 
         single_room_price, double_room_price, king_room_price = calculate_room_price(booking_day)
 
-        display_available_rooms(booking_day, 1, single_room_price, double_room_price, king_room_price)
+        display_available_rooms(booking_day, rand_single_room, rand_double_room, rand_king_room, single_room_price,
+                                double_room_price, king_room_price)
 
-        room_type = inputs.room_input()
+        room_type, rand_single_room, rand_double_room, rand_king_room = \
+            inputs.room_input(rand_single_room, rand_double_room, rand_king_room)
 
         num_guests = inputs.guest_input(room_type)
 
@@ -43,7 +49,7 @@ def main():
 
         while True:
             user_confirm = utils.get_yn(
-                "Please confirm the booking for " + str(num_nights) + " nights total = " + str(total_price) +
+                "Please confirm the booking for " + str(num_nights) + " nights total = $" + str(total_price) +
                 "\ny = Yes, n = No: ")
             if user_confirm == 'y':
                 break
@@ -91,6 +97,7 @@ def calculate_room_price(booking_day):
 
 
 def calculate_price(room_type, single_room_price, double_room_price, king_room_price, surcharge):
+    room_price = 0
     if room_type == 'SINGLE':
         room_price = single_room_price
     elif room_type == 'DOUBLE':
@@ -109,6 +116,7 @@ def calculate_surcharge(guest_amount):
     :param guest_amount: This is the amount of guests staying in the room
     :return:
     """
+    surcharge = 0
     if guest_amount == 1:
         surcharge = 0
     elif guest_amount == 2:
@@ -118,24 +126,25 @@ def calculate_surcharge(guest_amount):
     elif guest_amount == 4:
         surcharge = 32
 
-    print('There is a ' + str(surcharge) + ' surcharge based for ' + str(guest_amount) + ' guests.')
+    print('There is a $' + str(surcharge) + ' surcharge based for ' + str(guest_amount) + ' guests.')
     int(surcharge)
 
     return surcharge
 
 
-def display_available_rooms(booking_day, num_rooms, single_room_price, double_room_price, king_room_price):
+def display_available_rooms(booking_day, rand_single_room, rand_double_room, rand_king_room, single_room_price,
+                            double_room_price, king_room_price):
     print()
     print(booking_day, 'AVAILABLE ROOMS')
     utils.display_line()
-    print(num_rooms, 'single rooms (2 guest max) available at', single_room_price)
-    print(num_rooms, 'double rooms (4 guest max) available at', double_room_price)
-    print(num_rooms, 'king   rooms (2 guest max) available at', king_room_price)
+    print(rand_single_room, 'single rooms (2 guest max) available at $' + str(single_room_price))
+    print(rand_double_room, 'double rooms (4 guest max) available at $' + str(double_room_price))
+    print(rand_king_room, 'king   rooms (2 guest max) available at $' + str(king_room_price))
 
 
 def final_message(total_price):
     print()
-    print(f'{"Your total bill is", total_price}')
+    print("Your total bill is $" + str(total_price))
     print('We are looking forward to seeing you soon!')
 
 
