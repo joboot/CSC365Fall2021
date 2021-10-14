@@ -29,6 +29,11 @@ def main():
 
 
 def day_of_week_input():
+    """
+    Prompts the user for input on which day they would like to book the room
+    Accepts variations in inputs for example: monday, mon, m for Monday
+    :return: The booking day the user chooses
+    """
     while True:
         booking_day = input("Which day of the week will you be checking in?\nMonday - Sunday: ")
         booking_day = booking_day.lower()
@@ -59,6 +64,14 @@ def day_of_week_input():
 
 
 def room_input(rand_single_room, random_double_room, rand_king_room):
+    """
+    Prompts the user for input on which room they would like to stay in
+    If the there are no rooms of that type tell them to choose another
+    :param rand_single_room: The random number of rooms generated for the single rooms
+    :param random_double_room: The random number of rooms generated for the double rooms
+    :param rand_king_room: The random number of rooms generated for the king rooms
+    :return: The room type chosen and the number of rooms generated for each type subtracted by 1
+    """
     print()
     while True:
         room_type = input("What type of room would you like to stay in?\ns = single, d = double, k = king: ")
@@ -95,6 +108,11 @@ def room_input(rand_single_room, random_double_room, rand_king_room):
 
 
 def guest_input(room_type):
+    """
+    Prompts the user for input on how many guests are staying in the room
+    :param room_type: The room type the user has chosen
+    :return: Number of guests staying in that room
+    """
     print()
     while True:
         if room_type == 'SINGLE':
@@ -113,6 +131,13 @@ def guest_input(room_type):
 
 
 def night_input(room_type, num_guests, price):
+    """
+    Prompts the user for input on how many nights they wish to stay
+    :param room_type: The room type chosen by the user
+    :param num_guests: Amount of guests staying in the room
+    :param price: Price of staying one night in that room with that amount of guests
+    :return:
+    """
     print()
     num_nights = utils.get_positive_num(
         'How many days do you want to book a ' + room_type + ' room, with ' + str(num_guests) +

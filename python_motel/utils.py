@@ -47,7 +47,7 @@ def get_num(prompt, data_type='int'):
     Prompt user for input
     :param data_type: Data type to be converted to (int or float)
     :param prompt: Text to ask the user for input
-    :return: n/a
+    :return: Number input by the user
     """
     if data_type == 'int':
         number = int(input(prompt))
@@ -61,7 +61,7 @@ def get_yn(prompt):
     """
     Prompt user for input
     :param prompt: Text to ask the user for input
-    :return: n/a
+    :return: Answer input by the user
     """
     while True:
         user_input = input(prompt)
@@ -77,7 +77,7 @@ def get_positive_num(prompt, data_type='int'):
     Prompt user for input and ensure input number is positive
     :param data_type: Data type to be converted to (int or float)
     :param prompt: Text to ask the user for input
-    :return:
+    :return: Number input by the user
     """
     while True:
         if data_type == 'int':
@@ -97,7 +97,7 @@ def get_range(prompt, low, high, data_type='int'):
     :param prompt: Text to ask the user for input
     :param low: Lowest possible number input
     :param high: Highest possible number input
-    :return:
+    :return: Number input by the user
     """
     while True:
         if data_type == 'int':
@@ -112,6 +112,11 @@ def get_range(prompt, low, high, data_type='int'):
 
 
 def create_rand_num(num):
+    """
+    Creates a random number from a range using the randrange function
+    :param num: The random number range (starts at 0)
+    :return: The random number between that range
+    """
     rand_num = random.randrange(num)
 
     return rand_num
