@@ -9,6 +9,39 @@ __date__ = "10.21.2021"
 __status__ = "Development"
 
 import utils
+import student_maintenance
+
+
+def main():
+    students = []
+    next_student_id = len(students) + 1
+    print(next_student_id)
+    while True:
+        display_menu()
+        menu_input = utils.get_range('Please enter a valid menu # (0-4): ', -1, 4, 'int')
+        if menu_input == 1:
+            print("List all students")
+            utils.display_line()
+            student_maintenance.list_students(students)
+
+        elif menu_input == 2:
+            print("Add a student")
+            utils.display_line()
+            student_maintenance.add_student(students, next_student_id)
+
+        elif menu_input == 3:
+            print("Update a student")
+            utils.display_line()
+            student_maintenance.update_student(students)
+
+        elif menu_input == 4:
+            print("Delete a student")
+            utils.display_line()
+            student_maintenance.delete_student(students)
+
+        elif menu_input == 0:
+            print("Exit program")
+            break
 
 
 def display_menu():
@@ -21,3 +54,6 @@ def display_menu():
     print('0 - Exit program')
 
 
+# runs this specific module's main
+if __name__ == "__main__":
+    main()
