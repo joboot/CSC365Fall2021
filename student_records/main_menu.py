@@ -19,6 +19,8 @@ def main():
     while True:
         display_menu()
 
+        print(students)
+
         menu_input = utils.get_range('Please enter a valid menu # (0-4): ', -1, 4, 'int')
         print()
         if menu_input == 1:

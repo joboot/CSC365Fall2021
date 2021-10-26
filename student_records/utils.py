@@ -45,12 +45,15 @@ def get_num(prompt, data_type='int'):
     :param prompt: Text to ask the user for input
     :return: Number input by the user
     """
-    if data_type == 'int':
-        number = int(input(prompt))
-    else:
-        number = float(input(prompt))
+    try:
+        if data_type == 'int':
+            number = int(input(prompt))
+        else:
+            number = float(input(prompt))
 
-    return number
+        return number
+    except ValueError:
+        print("Invalid input. Input must be a number.")
 
 
 def get_yn(prompt):
@@ -75,15 +78,19 @@ def get_positive_num(prompt, data_type='int'):
     :param prompt: Text to ask the user for input
     :return: Number input by the user
     """
+
     while True:
-        if data_type == 'int':
-            number = int(input(prompt))
-        else:
-            number = float(input(prompt))
-        if number > 0:
-            return number
-        else:
-            print('Entry must be greater a positive number.')
+        try:
+            if data_type == 'int':
+                number = int(input(prompt))
+            else:
+                number = float(input(prompt))
+            if number > 0:
+                return number
+            else:
+                print('Entry must be greater a positive number.')
+        except ValueError:
+            print("Invalid input. Input must be a number.")
 
 
 def get_range(prompt, low, high, data_type='int'):
@@ -95,16 +102,20 @@ def get_range(prompt, low, high, data_type='int'):
     :param high: Highest possible number input
     :return: Number input by the user
     """
+
     while True:
-        if data_type == 'int':
-            number = int(input(prompt))
-        else:
-            number = float(input(prompt))
-        if low < number <= high:
-            return number
-        else:
-            print("Entry must be greater than", low,
-                  "and less than or equal to", high)
+        try:
+            if data_type == 'int':
+                number = int(input(prompt))
+            else:
+                number = float(input(prompt))
+            if low < number <= high:
+                return number
+            else:
+                print("Entry must be greater than", low,
+                      "and less than or equal to", high)
+        except ValueError:
+            print("Invalid input. Input must be a number.")
 
 
 # runs this specific module's main
