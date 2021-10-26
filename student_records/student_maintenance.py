@@ -7,6 +7,8 @@ __version__ = "1.0"
 __date__ = "10.21.2021"
 __status__ = "Development"
 
+import utils
+
 
 def main():
     print('this is main of student maintenance.')
@@ -27,6 +29,14 @@ def add_student(students, next_student_id):
     :rtype none
     :return:
     """
+    student = [next_student_id]
+
+    first_name = input("Please enter the student's first name: ")
+    student.append(first_name.title())
+    last_name = input("Please enter the student's last name: ")
+    student.append(last_name.title())
+
+    students.append(student)
 
 
 def delete_student(students):
@@ -45,16 +55,32 @@ def delete_student(students):
     :return no value
     :rtype none
     """
+    if students:
+        student_input = utils.get_range("Please enter the student ID to be deleted: ", 0, len(students), int)
+        student_id = find_student_index(students, student_input)
+        student = students[student_id]
+
+        while True:
+            user_confirm = utils.get_yn("Please confirm deleting Student ID #" + str(student[0]) + " " +
+                                        str(student[1]) + " " + str(student[2]) + " (y/n): ")
+
+            if user_confirm == 'y':
+                students.remove(student)
+                print("Student ID #" + str(student[0]) + " " + str(student[1]) + " " + str(student[2]) +
+                      " was deleted.")
+                break
+
+            else:
+                print('Deletion cancelled.')
+                break
+
+    else:
+        print("No student data found.")
 
 
 def find_student_index(students, student_id):
     """
     Search the 2D list for a specific student ID.
-    CODE EXAMPLE:
-    for student in students:
-        if student_id in student:
-            return students.index(student)
-    return -1
     :param students: student data (id, first_name, last_name)
     :type students: 2d list
     :param student_id: student id that they user wants to find
@@ -63,6 +89,10 @@ def find_student_index(students, student_id):
     :return the index of the student in the 2D list or -1 if not found
     :rtype int
     """
+    for student in students:
+        if student_id in student:
+            return students.index(student)
+    return -1
 
 
 def list_students(students):
@@ -76,6 +106,25 @@ def list_students(students):
     :return no value
     :rtype none
     """
+    if students:
+        print(
+            f'{"ID":>4s}'
+            f'{"First Name":>12s}'
+            f'{"Last Name":>21s}')
+        print(f'{"*" * 4:>4s}'
+              f'{"*" * 20:>22s}'
+              f'{"*" * 20:>22s}')
+        for student in students:
+            row = student
+            print(
+                f'{str(row[0]):>4s}'
+                f'{" ":>2s}'
+                f'{str(row[1]):<20s}'
+                f'{" ":>2s}'
+                f'{str(row[2]):<20s}')
+
+    else:
+        print("No student data found.")
 
 
 def update_student(students):
@@ -94,6 +143,34 @@ def update_student(students):
     :return no value
     :rtype none
     """
+    if students:
+        student_input = utils.get_range("Please enter the student ID to be updated: ", 0, len(students), int)
+        student_id = find_student_index(students, student_input)
+        student = students[student_id]
+
+        while True:
+            user_confirm = utils.get_yn("Please confirm updating Student ID #" + str(student[0]) + " " +
+                                        str(student[1]) + " " + str(student[2]) + " (y/n): ")
+
+            if user_confirm == 'y':
+                student_first = input("Please enter the student's first name or press enter to keep " +
+                                      str(student[1]) + ": ") or student[1]
+                student_last = input("Please enter the student's last name or press enter to keep " +
+                                     str(student[2]) + ": ") or student[2]
+
+                print("Student ID #" + str(student[0]) + " " + str(student[1]) + " " + str(student[2]) +
+                      " was updated to " + student_first + " " + student_last + ".")
+                student[1] = student_first.title()
+                student[2] = student_last.title()
+                print(student)
+                break
+
+            else:
+                print('Update cancelled.')
+                break
+
+    else:
+        print("No student data found.")
 
 
 # runs this specific module's main

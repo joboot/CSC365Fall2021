@@ -14,17 +14,20 @@ import student_maintenance
 
 def main():
     students = []
-    next_student_id = len(students) + 1
-    print(next_student_id)
+    next_student_id = 0
+
     while True:
         display_menu()
+
         menu_input = utils.get_range('Please enter a valid menu # (0-4): ', -1, 4, 'int')
+        print()
         if menu_input == 1:
             print("List all students")
             utils.display_line()
             student_maintenance.list_students(students)
 
         elif menu_input == 2:
+            next_student_id += 1
             print("Add a student")
             utils.display_line()
             student_maintenance.add_student(students, next_student_id)
@@ -42,6 +45,7 @@ def main():
         elif menu_input == 0:
             print("Exit program")
             break
+        print()
 
 
 def display_menu():
