@@ -13,13 +13,22 @@ import student_maintenance
 
 
 def main():
+    """
+    Inputs:
+    Main menu number to choose an option
+    Any inputs from the student maintenance functions
+
+    Outputs:
+    The display menu
+    Prompt for user input on which menu option they want to choose
+    Any outputs from the student maintenance functions
+    :return:
+    """
     students = []
     next_student_id = 0
 
     while True:
         display_menu()
-
-        print(students)
 
         menu_input = utils.get_range('Please enter a valid menu # (0-4): ', -1, 4, 'int')
         print()
@@ -45,12 +54,17 @@ def main():
             student_maintenance.delete_student(students)
 
         elif menu_input == 0:
-            print("Exit program")
+            print("Exiting program...\n")
+            print("Goodbye!")
             break
         print()
 
 
 def display_menu():
+    """
+    Displays the main menu and all of its options
+    :return: no value
+    """
     print('Student Menu')
     utils.display_line()
     print('1 - List all students')

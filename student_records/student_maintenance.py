@@ -1,5 +1,6 @@
 """
 Student maintenance module
+This module contains the functions for adding, updating, and deleting student data
 """
 
 __author__ = "Jordan Booth"
@@ -11,7 +12,22 @@ import utils
 
 
 def main():
-    print('this is main of student maintenance.')
+    """
+    Test code for student maintenance module
+    :return: no value
+    :rtype: none
+    """
+    print('Test code for student maintenance module')
+    next_student_id = 1
+    students = []
+    add_student(students, next_student_id)
+    list_students(students)
+    update_student(students)
+    list_students(students)
+    stud_index = find_student_index(students, 1)
+    print("Student index method:", stud_index)
+    delete_student(students)
+    list_students(students)
 
 
 def add_student(students, next_student_id):
@@ -27,7 +43,6 @@ def add_student(students, next_student_id):
 
     :return no value
     :rtype none
-    :return:
     """
     student = [next_student_id]
 
@@ -176,7 +191,6 @@ def update_student(students):
                           " was updated to " + student_first + " " + student_last + ".")
                     student[1] = student_first.title()
                     student[2] = student_last.title()
-                    print(student)
                     break
 
                 else:
