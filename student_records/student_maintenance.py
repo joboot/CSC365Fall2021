@@ -44,14 +44,13 @@ def add_student(students, next_student_id):
     :return no value
     :rtype none
     """
-    student = [next_student_id]
+    first_name = input("Please enter the student's first name: ").title()
+    last_name = input("Please enter the student's last name: ").title()
 
-    first_name = input("Please enter the student's first name: ")
-    student.append(first_name.title())
-    last_name = input("Please enter the student's last name: ")
-    student.append(last_name.title())
+    students.append([next_student_id, first_name, last_name])
 
-    students.append(student)
+    print("Student ID #" + str(next_student_id) + " " + first_name + " " + last_name +
+          " was added.")
 
 
 def delete_student(students):
@@ -70,34 +69,30 @@ def delete_student(students):
     :return no value
     :rtype none
     """
-    while True:
-        if students:
-            student_input = utils.get_positive_num("Please enter the student ID to be deleted: ", "int")
+    if not students:
+        print("No student data found.")
+        return
 
-            if find_student_index(students, student_input) == -1:
-                print('No student found with ID #' + str(student_input) + ".")
-                break
+    student_input = utils.get_positive_num("Please enter the student ID to be deleted: ", "int")
 
-            else:
-                student_id = find_student_index(students, student_input)
-                student = students[student_id]
+    if find_student_index(students, student_input) == -1:
+        print('No student found with ID #' + str(student_input) + ".")
+        return
 
-                while True:
-                    user_confirm = utils.get_yn("Please confirm deleting Student ID #" + str(student[0]) + " " +
-                                                str(student[1]) + " " + str(student[2]) + " (y/n): ")
+    else:
+        student_id = find_student_index(students, student_input)
+        student = students[student_id]
 
-                    if user_confirm == 'y':
-                        students.remove(student)
-                        print("Student ID #" + str(student[0]) + " " + str(student[1]) + " " + str(student[2]) +
-                              " was deleted.")
-                        break
+        user_confirm = utils.get_yn("Please confirm deleting Student ID #" + str(student[0]) + " " +
+                                    str(student[1]) + " " + str(student[2]) + " (y/n): ")
 
-                    else:
-                        print('Deletion cancelled.')
-                        break
-                break
+        if user_confirm == 'y':
+            students.remove(student)
+            print("Student ID #" + str(student[0]) + " " + str(student[1]) + " " + str(student[2]) +
+                  " was deleted.")
+
         else:
-            print("No student data found.")
+            print('Deletion cancelled.')
 
 
 def find_student_index(students, student_id):
@@ -112,7 +107,7 @@ def find_student_index(students, student_id):
     :rtype int
     """
     for student in students:
-        if student_id in student:
+        if student_id == student[0]:
             return students.index(student)
     return -1
 
@@ -128,25 +123,24 @@ def list_students(students):
     :return no value
     :rtype none
     """
-    if students:
-        print(
-            f'{"ID":>4s}'
-            f'{"First Name":>12s}'
-            f'{"Last Name":>21s}')
-        print(f'{"*" * 4:>4s}'
-              f'{"*" * 20:>22s}'
-              f'{"*" * 20:>22s}')
-        for student in students:
-            row = student
-            print(
-                f'{str(row[0]):>4s}'
-                f'{" ":>2s}'
-                f'{str(row[1]):<20s}'
-                f'{" ":>2s}'
-                f'{str(row[2]):<20s}')
-
-    else:
+    if not students:
         print("No student data found.")
+        return
+    print(
+        f'{"ID":>4s}'
+        f'{"First Name":>12s}'
+        f'{"Last Name":>21s}')
+    print(f'{"*" * 4:>4s}'
+          f'{"*" * 20:>22s}'
+          f'{"*" * 20:>22s}')
+    for student in students:
+        row = student
+        print(
+            f'{str(row[0]):>4s}'
+            f'{" ":>2s}'
+            f'{str(row[1]):<20s}'
+            f'{" ":>2s}'
+            f'{str(row[2]):<20s}')
 
 
 def update_student(students):
@@ -165,40 +159,37 @@ def update_student(students):
     :return no value
     :rtype none
     """
-    while True:
-        if students:
-            student_input = utils.get_positive_num("Please enter the student ID to be updated: ", "int")
 
-            if find_student_index(students, student_input) == -1:
-                print('No student found with ID #' + str(student_input) + ".")
-                break
+    if not students:
+        print("No student data found.")
+        return
 
-            else:
-                student_id = find_student_index(students, student_input)
-                student = students[student_id]
+    student_input = utils.get_positive_num("Please enter the student ID to be updated: ", "int")
 
-            while True:
-                user_confirm = utils.get_yn("Please confirm updating Student ID #" + str(student[0]) + " " +
-                                            str(student[1]) + " " + str(student[2]) + " (y/n): ")
+    if find_student_index(students, student_input) == -1:
+        print('No student found with ID #' + str(student_input) + ".")
+        return
 
-                if user_confirm == 'y':
-                    student_first = input("Please enter the student's first name or press enter to keep " +
-                                          str(student[1]) + ": ") or student[1]
-                    student_last = input("Please enter the student's last name or press enter to keep " +
-                                         str(student[2]) + ": ") or student[2]
+    else:
+        student_id = find_student_index(students, student_input)
+        student = students[student_id]
 
-                    print("Student ID #" + str(student[0]) + " " + str(student[1]) + " " + str(student[2]) +
-                          " was updated to " + student_first + " " + student_last + ".")
-                    student[1] = student_first.title()
-                    student[2] = student_last.title()
-                    break
+    user_confirm = utils.get_yn("Please confirm updating Student ID #" + str(student[0]) + " " +
+                                str(student[1]) + " " + str(student[2]) + " (y/n): ")
 
-                else:
-                    print('Update cancelled.')
-                    break
-            break
-        else:
-            print("No student data found.")
+    if user_confirm == 'y':
+        student_first = input("Please enter the student's first name or press enter to keep " +
+                              str(student[1]) + ": ") or student[1]
+        student_last = input("Please enter the student's last name or press enter to keep " +
+                             str(student[2]) + ": ") or student[2]
+
+        print("Student ID #" + str(student[0]) + " " + str(student[1]) + " " + str(student[2]) +
+              " was updated to " + student_first + " " + student_last + ".")
+        student[1] = student_first.title()
+        student[2] = student_last.title()
+
+    else:
+        print('Update cancelled.')
 
 
 # runs this specific module's main
