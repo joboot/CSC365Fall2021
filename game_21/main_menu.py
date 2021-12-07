@@ -32,13 +32,16 @@ def main():
         }
     }
     """
+    players = {}
     display_intro()
+    get_players(players)
+    print(players)
 
 
 def display_intro():
     """
-
-    :return:
+    Displays the game title and rules
+    :return: n/a
     """
     utils.display_line()
     print("\t\t   _________    __  _________   ___  ___\n" +
@@ -58,11 +61,11 @@ def display_intro():
           "6. The player then can choose to receive additional cards.\n" +
           "7. Each player starts with $1.00.\n" +
           "8. Default bet is 25 cents, but the player can double it after holding.\n" +
-          "9. Winner is the last person with cash, not including the dealer.\n")
+          "9. Winner is the last person with cash, not including the dealer.")
     utils.display_line()
 
 
-def get_players():
+def get_players(players):
     """
     Get the player's names and then add the player to the dictionary setting up initial player's data
     Until the user enters the word 'done' symbolizing no more players
@@ -73,7 +76,20 @@ def get_players():
     :return: n/a
     """
     print("Now lets get this game setup.  Who is all playing?\n" +
-          "Please enter a player's name or enter 'done' when finished.")
+          "Please enter a player's name or enter 'done' when finished.\n")
+
+    while True:
+        player_name = input("Please enter the players name: ")
+
+        if player_name.lower() == "done":
+            break
+
+        players[player_name] = {
+            "cash": 1.0,
+            "cards": [],
+            "cards_total": 0,
+            "bet": .25
+        }
 
 
 def play_round(players):
