@@ -110,8 +110,8 @@ def play_round(players):
     utils.display_line()
     print()
 
-    # setup_new_round(players)
-    # deal_to_players(players)
+    setup_new_round(players)
+    deal_to_players(players)
     # dealer_cards_total = deal_to_dealer(players)
     # display_winners(players, dealer_cards_total)
 
@@ -141,7 +141,8 @@ def deal_card(player_info):
     :return: n/a
     """
     card_num = random.randint(1, 10)
-    player_info = card_num
+    player_info['cards'].append(card_num)
+    player_info['cards_total'] += card_num
 
 
 def deal_to_players(players):
@@ -155,11 +156,19 @@ def deal_to_players(players):
     :param players: 2D dictionary storing all player's data
     :return: n/a
     """
-    for player in players:
-        if player["cash"] == 0:
-            pass
-        else:
-            deal_card(player["cards"])
+    for player_name, player_info in players.items():
+        cash, cards, cards_total, bet = player_info.values()
+
+        if cash < .25:
+            continue
+
+        print("Dealing to " + player_name)
+
+        deal_card(player_info)
+        deal_card(player_info)
+
+        cash, cards, cards_total, bet = player_info.values()
+        display_cards(cards)
 
 
 def deal_to_dealer(players):
@@ -178,6 +187,10 @@ def display_cards(cards):
     :param cards: one player's current cards
     :return: n/a
     """
+    print('  Cards: ', end='')
+    for card in cards:
+        print(str(card) + ' ', end='')
+    print()
 
 
 def display_winners(players, dealer_cards_total):
