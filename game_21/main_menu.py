@@ -112,7 +112,7 @@ def play_round(players):
 
     setup_new_round(players)
     deal_to_players(players)
-    # dealer_cards_total = deal_to_dealer(players)
+    dealer_cards_total = deal_to_dealer(players)
     # display_winners(players, dealer_cards_total)
 
 
@@ -179,6 +179,37 @@ def deal_to_dealer(players):
     :param players: 2D dictionary storing all player's data
     :return: n/a
     """
+    num_players_out = 0
+    highest_hand = 0
+
+    for player, player_info in players.items():
+        cards_total = player_info['cards_total']
+        if cards_total > 21:
+            num_players_out += 1
+        elif cards_total > highest_hand:
+            highest_hand = cards_total
+
+    if num_players_out == len(players):
+        return 21  # dealer auto win
+
+    print("Dealing to dealer")
+
+    dealer_cards = []
+    dealer_cards_total = 0
+
+    while True:
+        card_num = random.randint(1, 10)
+        dealer_cards.append(card_num)
+        dealer_cards_total += card_num
+
+        if dealer_cards_total > 21:
+            display_cards(dealer_cards)
+            print("Dealer's hand exceeded 21")
+            break
+
+        elif dealer_cards_total > highest_hand:
+            display_cards(dealer_cards)
+            return dealer_cards_total
 
 
 def display_cards(cards):
@@ -200,6 +231,7 @@ def display_winners(players, dealer_cards_total):
     :param dealer_cards_total: the dealer's card total
     :return: n/a
     """
+
 
 
 def display_round_summary(players):
