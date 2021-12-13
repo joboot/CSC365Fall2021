@@ -8,6 +8,7 @@ __date__ = "11.30.2021"
 __status__ = "Development"
 
 import utils
+import random
 
 
 def main():
@@ -35,6 +36,8 @@ def main():
     players = {}
     display_intro()
     get_players(players)
+    print(players)
+    play_round(players)
     print(players)
 
 
@@ -102,6 +105,15 @@ def play_round(players):
     :param players: 2D Dictionary of all player's data
     :return: n/a
     """
+    utils.display_line()
+    print("Starting Game...")
+    utils.display_line()
+    print()
+
+    # setup_new_round(players)
+    # deal_to_players(players)
+    # dealer_cards_total = deal_to_dealer(players)
+    # display_winners(players, dealer_cards_total)
 
 
 def setup_new_round(players):
@@ -109,10 +121,14 @@ def setup_new_round(players):
     Reset all player's data for the next round.
         set cards to an empty list
         set cards_total to 0
-        set bet to 0
+        set bet to 0.25
     :param players: 2D dictionary of the player's data
     :return:  n/a
     """
+    for player_name, player_info in players.items():
+        player_info['cards'] = []
+        player_info['cards_total'] = 0
+        player_info['bet'] = .25
 
 
 def deal_card(player_info):
@@ -124,6 +140,8 @@ def deal_card(player_info):
     :param player_info: one player's sub dictionary of cards, and cards_total
     :return: n/a
     """
+    card_num = random.randint(1, 10)
+    player_info = card_num
 
 
 def deal_to_players(players):
@@ -137,6 +155,11 @@ def deal_to_players(players):
     :param players: 2D dictionary storing all player's data
     :return: n/a
     """
+    for player in players:
+        if player["cash"] == 0:
+            pass
+        else:
+            deal_card(player["cards"])
 
 
 def deal_to_dealer(players):
