@@ -1,5 +1,5 @@
 """
-
+This is a game called Game 21 that is based off of blackjack
 """
 
 __author__ = "Jordan Booth"
@@ -13,32 +13,49 @@ import random
 
 def main():
     """
+    Inputs:
+    Player name
+    Whether or not they want to draw another card
+    Whether or not they want to double down
+    Whether or not they want to continue playing
 
+    Outputs:
+    Title
+    Rules
+    Dealing to players and dealer
+    End of round summary with winners and cash left
     :return:
     """
-    """
-    DICTIONARY SETUP
-    players = {
-        "Deb": {
-            "cash": 1.0,
-            "cards": [],
-            "cards_total": ,
-            "bet": 0.25
-        },
-        "Sam": {
-            "cash": 1.0,
-            "cards": [],
-            "cards_total": ,
-            "bet": 0.25        
-        }
-    }
-    """
+    num_players_out = 0
     players = {}
     display_intro()
     get_players(players)
-    print(players)
-    play_round(players)
-    print(players)
+
+    while True:
+
+        play_round(players)
+
+        for player_name, player_info in players.items():
+
+            cash, cards, cards_total, bet = player_info.values()
+
+            if cash < .25:
+                num_players_out += 1
+                continue
+
+        if num_players_out == len(players):
+            utils.display_line()
+            print("Game over!  All players are out of the game")
+            utils.display_line()
+            break
+
+        user_input = utils.get_yn("Would you like to play another round? (y/n)? ")
+
+        if not user_input:
+            utils.display_line()
+            print("Thanks for playing! Come back soon!")
+            utils.display_line()
+            break
 
 
 def display_intro():
@@ -175,13 +192,22 @@ def deal_to_players(players):
                 print(player_name + "'s hand exceeded 21")
                 break
 
+            print()
             user_input = utils.get_yn("Would you like another card (y/n)? ")
 
-            if user_input == True:
+            if user_input:
                 deal_card(player_info)
 
             else:
+                cash, cards, cards_total, bet = player_info.values()
                 print(player_name, "holds at", cards_total)
+
+                user_input = utils.get_yn("Do you want to double down (y/n)? ")
+
+                if user_input:
+                    player_info['bet'] += .25
+
+                print(player_name, player_info)
                 break
 
 
@@ -204,6 +230,7 @@ def deal_to_dealer(players):
             highest_hand = cards_total
 
     if num_players_out == len(players):
+        print("Dealer wins!")
         return 21  # dealer auto win
 
     print("Dealing to dealer")
@@ -223,6 +250,7 @@ def deal_to_dealer(players):
 
         elif dealer_cards_total > highest_hand:
             display_cards(dealer_cards)
+            print("Dealer holds at", dealer_cards_total)
             print("Dealer wins!")
             return dealer_cards_total
 
@@ -247,21 +275,35 @@ def display_winners(players, dealer_cards_total):
     :return: n/a
     """
     total_winners = 0
+    num_players_out = 0
+
+    print()
 
     for player_name, player_info in players.items():
 
         cash, cards, cards_total, bet = player_info.values()
 
         if cash < 0.25:
+            num_players_out += 1
             continue
 
         if dealer_cards_total > 21:
+
             if cards_total <= 21:
                 total_winners += 1
                 player_info['cash'] += bet
                 print(player_name, "is a winner!")
+                print(player_info)
+
+                print()
+
             else:
                 player_info['cash'] -= bet
+
+        else:
+            player_info['cash'] -= bet
+
+    display_round_summary(players)
 
 
 def display_round_summary(players):
@@ -270,6 +312,15 @@ def display_round_summary(players):
     :param players: 2D dictionary of all player's data
     :return: the number of players who still has cash
     """
+    for player_name, player_info in players.items():
+        cash, cards, cards_total, bet = player_info.values()
+
+        print(
+            f'{player_name + "s balance:":<30s}'
+            f'{"$"}'
+            f'{str(cash):>6s}')
+
+    print()
 
 
 # runs this specific module's main
