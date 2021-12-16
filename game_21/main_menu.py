@@ -207,7 +207,6 @@ def deal_to_players(players):
                 if user_input:
                     player_info['bet'] += .25
 
-                print(player_name, player_info)
                 break
 
 
@@ -293,7 +292,6 @@ def display_winners(players, dealer_cards_total):
                 total_winners += 1
                 player_info['cash'] += bet
                 print(player_name, "is a winner!")
-                print(player_info)
 
                 print()
 
