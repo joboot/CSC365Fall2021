@@ -65,8 +65,12 @@ def get_yn(prompt):
     while True:
         user_input = input(prompt)
         user_input = user_input.lower()
-        if user_input == 'y' or user_input == 'n' or user_input == 'yes' or user_input == 'no':
-            return user_input
+        if user_input == 'y' or user_input == 'yes':
+            return True
+
+        elif user_input == 'n' or user_input == 'no':
+            return False
+
         else:
             print('Please enter y = Yes, n = No.')
 

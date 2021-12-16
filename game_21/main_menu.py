@@ -113,7 +113,7 @@ def play_round(players):
     setup_new_round(players)
     deal_to_players(players)
     dealer_cards_total = deal_to_dealer(players)
-    # display_winners(players, dealer_cards_total)
+    display_winners(players, dealer_cards_total)
 
 
 def setup_new_round(players):
@@ -167,8 +167,22 @@ def deal_to_players(players):
         deal_card(player_info)
         deal_card(player_info)
 
-        cash, cards, cards_total, bet = player_info.values()
-        display_cards(cards)
+        while True:
+            cash, cards, cards_total, bet = player_info.values()
+            display_cards(cards)
+
+            if cards_total > 21:
+                print(player_name + "'s hand exceeded 21")
+                break
+
+            user_input = utils.get_yn("Would you like another card (y/n)? ")
+
+            if user_input == True:
+                deal_card(player_info)
+
+            else:
+                print(player_name, "holds at", cards_total)
+                break
 
 
 def deal_to_dealer(players):
@@ -205,10 +219,11 @@ def deal_to_dealer(players):
         if dealer_cards_total > 21:
             display_cards(dealer_cards)
             print("Dealer's hand exceeded 21")
-            break
+            return dealer_cards_total
 
         elif dealer_cards_total > highest_hand:
             display_cards(dealer_cards)
+            print("Dealer wins!")
             return dealer_cards_total
 
 
@@ -231,7 +246,22 @@ def display_winners(players, dealer_cards_total):
     :param dealer_cards_total: the dealer's card total
     :return: n/a
     """
+    total_winners = 0
 
+    for player_name, player_info in players.items():
+
+        cash, cards, cards_total, bet = player_info.values()
+
+        if cash < 0.25:
+            continue
+
+        if dealer_cards_total > 21:
+            if cards_total <= 21:
+                total_winners += 1
+                player_info['cash'] += bet
+                print(player_name, "is a winner!")
+            else:
+                player_info['cash'] -= bet
 
 
 def display_round_summary(players):
